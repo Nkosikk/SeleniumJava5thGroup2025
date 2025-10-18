@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage {
+public class Homepage {
 
     WebDriver driver;
 //Locator to verify that you are on the homepage
@@ -12,7 +12,7 @@ public class HomePage {
     WebElement homepageTitle_id;
 
 //
-    public HomePage(WebDriver driver){
+    public Homepage(WebDriver driver){
         this.driver=driver;
     }
     // verify method is displayed
