@@ -17,14 +17,11 @@ public class HomePage {
     public HomePage(WebDriver driver){
         this.driver=driver;
     }
-
     public void verifyHomePageIsDisplayed(){
         homepageTitle_id.isDisplayed();
     }
-
     public void clickLearningMaterial(){
         LearningMaterial_id.click();
-
     }
 
 
