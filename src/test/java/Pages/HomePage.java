@@ -14,7 +14,8 @@ public class HomePage {
     @FindBy(id = "nav-btn-practice")
     WebElement LearningMaterial_id;
 
-    public HomePage(WebDriver driver){
+    public HomePage(WebDriver driver)
+    {
         this.driver=driver;
     }
 
@@ -22,14 +23,10 @@ public class HomePage {
         homepageTitle_id.isDisplayed();
     }
 
-    public void clickLearningMaterial(){
+    public void verifyLearningMaterialsIsClicked(){
         LearningMaterial_id.click();
 
+
     }
-
-
-
-
-
 
 }
