@@ -14,6 +14,11 @@ public class HomePage {
     @FindBy(id = "nav-btn-practice")
     WebElement LearningMaterial_id;
 
+    @FindBy(id = "login-email")
+    WebElement enterEmail_id;
+
+
+
     public HomePage(WebDriver driver){
         this.driver=driver;
     }
@@ -24,9 +29,9 @@ public class HomePage {
 
     public void clickLearningMaterial(){
         LearningMaterial_id.click();
-
     }
-
+    public void enterEmail (){ enterEmail_id.sendKeys("leehlenkambule@gmail.com");
+    }
 
 
 
