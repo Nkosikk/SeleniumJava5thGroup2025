@@ -1,0 +1,37 @@
+package Tests;
+
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+@Test
+public class NdosiTests extends Base{
+
+
+    public void verifyHomePageIsDisplayedTests(){
+        homePage.verifyHomePageIsDisplayed();
+    }
+    @Test(dependsOnMethods = "verifyHomePageIsDisplayedTests")
+    public void clickLearningMaterialTests() {
+        homePage.clickLearningMaterial();
+    }
+    @Test(dependsOnMethods = "clickLearningMaterialTests")
+    public void enterLoginEmail(){
+        loginPage.enterLoginEmail("nkosi@gmail.com");
+    }
+
+    @Test(dependsOnMethods = "enterLoginEmail")
+    public void enterPasswordTests() {
+        loginPage.enterPasswordId("12345678");
+    }
+    @Test(dependsOnMethods = "enterPasswordTests")
+    public void clickLoginTests() {
+        loginPage.clickLogin();
+    }
+
+
+
+    @AfterTest
+    public void closeBrowser(){
+        driver.quit();
+    }
+}
