@@ -22,7 +22,7 @@ public class NdosiTests extends Base{
 
     @Test(dependsOnMethods = "enterLoginEmail")
     public void enterPasswordTests() {
-        loginPage.enterPasswordId("12345678");
+        loginPage.enterPasswordId("123456784");
     }
 
     @Test(dependsOnMethods = "enterPasswordTests")
