@@ -17,8 +17,13 @@ public class LoginPage {
         this.driver=driver;
     }
 
-    public void enterLoginEmail(){loginEmail_id.sendKeys("deez@gmail.com");}
-    public void enterPasswordId(){loginPassword_id.sendKeys("012345678");}
-    public void clickLogin(){loginPassword_id.click();}
+    public void enterLoginEmail(){
+        loginEmail_id.sendKeys("deez@gmail.com");
+    }
+    public void enterPasswordId(){
+        loginPassword_id.sendKeys("012345678");
+    }
+    public void clickLogin(){
+        loginPassword_id.click();}
 }
 
