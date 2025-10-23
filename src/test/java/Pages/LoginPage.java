@@ -4,26 +4,39 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class LoginPage {
     WebDriver driver;
 
-    @FindBy(id="login-email") WebElement loginEmail_id;
-    @FindBy(id="login-password") WebElement loginPassword_id;
-    @FindBy(id="login-submit") WebElement loginSubmit_id;
+    @FindBy(id = "login-email")
+    WebElement loginEmail_id;
+    @FindBy(id = "login-password")
+    WebElement loginPassword_id;
+    @FindBy(id = "login-submit")
+    WebElement loginSubmit_id;
 
-    public LoginPage(WebDriver driver){
-        this.driver=driver;
+    public LoginPage(WebDriver driver) {this.driver = driver;}
+
+
+    public void enterLoginEmail(){loginEmail_id.sendKeys("deez@gmail.com");}
+    public void enterPasswordId(){loginPassword_id.sendKeys("012345678");}
+
+    public void enterLoginEmail(String email) {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(loginEmail_id));loginEmail_id.sendKeys(email);
     }
 
-    public void enterLoginEmail(){
-        loginEmail_id.sendKeys("deez@gmail.com");
+    public void enterPasswordId(String password) {
+        loginPassword_id.sendKeys(password);
     }
-    public void enterPasswordId(){
-        loginPassword_id.sendKeys("012345678");
+
+    public void clickLogin() {
+        loginSubmit_id.click();
     }
-    public void clickLogin(){
-        loginPassword_id.click();}
 }
 
