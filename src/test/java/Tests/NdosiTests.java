@@ -22,7 +22,7 @@ public class NdosiTests extends Base{
 
     @Test(dependsOnMethods = "enterLoginEmail")
     public void enterPasswordTests() {
-        loginPage.enterPasswordId("123456784");
+        loginPage.enterPasswordId("12345678");
     }
 
     @Test(dependsOnMethods = "enterPasswordTests")
@@ -32,8 +32,16 @@ public class NdosiTests extends Base{
 
     @Test(dependsOnMethods = "clickLoginTests")
     public void verifyWelcomeHeading() {
-        learningMaterialPage.verifyHeading();}
+        learningMaterialPage.verifyHeading();
 
+
+    }
+
+    @Test(dependsOnMethods = "verifyWelcomeHeading")
+    public void clickWebAutomationAdvanceTab() throws InterruptedException {
+        learningMaterialPage.clickWebAutomationAdvanceTab();
+      Thread.sleep(2000);
+    }
 
 
 
