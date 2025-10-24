@@ -14,12 +14,12 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 public class LoginPage {
     WebDriver driver;
 
-    @FindBy(id = "login-email")
+    @FindBy(id = "login-email")////*[@id="login-email"]
     WebElement loginEmail_id;
     @FindBy(id = "login-password")
-    WebElement loginPassword_id;
+    WebElement loginPassword_id;      ////*[@id="login-password"]
     @FindBy(id = "login-submit")
-    WebElement loginSubmit_id;
+    WebElement loginSubmit_id;      ////*[@id="login-submit"]
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
