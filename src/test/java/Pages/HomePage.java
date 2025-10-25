@@ -22,15 +22,12 @@ public class HomePage {
     public HomePage(WebDriver driver){
         this.driver=driver;
     }
-
     public void verifyHomePageIsDisplayed(){
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(homepageTitle_id));
         homepageTitle_id.isDisplayed();
     }
-
     public void clickLearningMaterial(){
         LearningMaterial_id.click();
-
     }
 
 
