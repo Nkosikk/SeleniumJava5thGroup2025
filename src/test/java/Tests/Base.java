@@ -1,6 +1,7 @@
 package Tests;
 
 import Pages.HomePage;
+import Pages.InventoryPage;
 import Pages.LearningMaterialPage;
 import Pages.LoginPage;
 import Utils.BrowserFactory;
@@ -15,6 +16,6 @@ public class Base {
     HomePage homePage = PageFactory.initElements(driver, HomePage.class);
     LoginPage loginPage= PageFactory.initElements(driver, LoginPage.class);
     LearningMaterialPage learningMaterialPage = PageFactory.initElements(driver, LearningMaterialPage.class);
-
+    InventoryPage inventoryPage = PageFactory.initElements(driver, InventoryPage.class);
 
 }
