@@ -19,6 +19,11 @@ public class WebAutomationAdvancePage {
     @FindBy(id = "deviceType")
     WebElement deviceTypeDropDown_id;
 
+    @FindBy(id = "storage-64GB")
+    WebElement selectStorage_id;
+
+
+
     public WebAutomationAdvancePage(WebDriver driver){
         this.driver=driver;
     }
@@ -31,9 +36,9 @@ public class WebAutomationAdvancePage {
         deviceTypeDropDown_id.sendKeys(deviceType);
     }
 
-
-
-
+    public void selectDeviceStorage(){
+        selectStorage_id.click();
+    }
 
 
 }
