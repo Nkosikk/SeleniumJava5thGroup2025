@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleContains;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class WebAutomationAdvancePage {
@@ -19,6 +20,9 @@ public class WebAutomationAdvancePage {
     @FindBy(id = "deviceType")
     WebElement deviceTypeDropDown_id;
 
+    @FindBy(id = "brand")
+    WebElement tabletBrand_id;
+
     public WebAutomationAdvancePage(WebDriver driver){
         this.driver=driver;
     }
@@ -30,6 +34,12 @@ public class WebAutomationAdvancePage {
     public void selectDeviceType(String deviceType){
         deviceTypeDropDown_id.sendKeys(deviceType);
     }
+
+    public void selectTabletBrand(String deviceBrand){
+        tabletBrand_id.sendKeys(deviceBrand);
+    }
+
+
 
 
 

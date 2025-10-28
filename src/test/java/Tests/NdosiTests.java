@@ -17,7 +17,7 @@ public class NdosiTests extends Base{
 
     @Test(dependsOnMethods = "clickLearningMaterialTests")
     public void enterLoginEmail(){
-        loginPage.enterLoginEmail("nkosi@gmail.com");
+        loginPage.enterLoginEmail("soundytest@gmail.com");
     }
 
     @Test(dependsOnMethods = "enterLoginEmail")
@@ -52,7 +52,11 @@ public class NdosiTests extends Base{
       Thread.sleep(4000);
     }
 
-
+    @Test(dependsOnMethods = "selectDeviceTypeTest")
+    public void selectDeviceBrandTest() throws InterruptedException {
+        webAutomationAdvancePage.selectTabletBrand("Samsung");
+        Thread.sleep(4000);
+    }
     @AfterTest
     public void closeBrowser(){
         driver.quit();
