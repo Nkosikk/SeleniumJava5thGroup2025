@@ -17,7 +17,7 @@ public class NdosiTests extends Base{
 
     @Test(dependsOnMethods = "clickLearningMaterialTests")
     public void enterLoginEmail(){
-        loginPage.enterLoginEmail("nkosi@gmail.com");
+        loginPage.enterLoginEmail("soundytest@gmail.com");
     }
 
     @Test(dependsOnMethods = "enterLoginEmail")
@@ -33,8 +33,6 @@ public class NdosiTests extends Base{
     @Test(dependsOnMethods = "clickLoginTests")
     public void verifyWelcomeHeading() {
         learningMaterialPage.verifyHeading();
-
-
     }
 
     @Test(dependsOnMethods = "verifyWelcomeHeading")
@@ -43,8 +41,22 @@ public class NdosiTests extends Base{
       Thread.sleep(2000);
     }
 
+    @Test(dependsOnMethods = "clickWebAutomationAdvanceTab")
+    public void verifyWebAutomationAdvancePageIsDisplayedTest(){
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+    }
 
+    @Test(dependsOnMethods = "verifyWebAutomationAdvancePageIsDisplayedTest")
+    public void selectDeviceTypeTest() throws InterruptedException {
+      webAutomationAdvancePage.selectDeviceType("Tablet");
+      Thread.sleep(4000);
+    }
 
+    @Test(dependsOnMethods = "selectDeviceTypeTest")
+    public void selectDeviceBrandTest() throws InterruptedException {
+        webAutomationAdvancePage.selectTabletBrand("Samsung");
+        Thread.sleep(4000);
+    }
     @AfterTest
     public void closeBrowser(){
         driver.quit();
