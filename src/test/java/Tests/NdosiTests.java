@@ -33,8 +33,6 @@ public class NdosiTests extends Base{
     @Test(dependsOnMethods = "clickLoginTests")
     public void verifyWelcomeHeading() {
         learningMaterialPage.verifyHeading();
-
-
     }
 
     @Test(dependsOnMethods = "verifyWelcomeHeading")
@@ -43,6 +41,16 @@ public class NdosiTests extends Base{
       Thread.sleep(2000);
     }
 
+    @Test(dependsOnMethods = "clickWebAutomationAdvanceTab")
+    public void verifyWebAutomationAdvancePageIsDisplayedTest(){
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+    }
+
+    @Test(dependsOnMethods = "verifyWebAutomationAdvancePageIsDisplayedTest")
+    public void selectDeviceTypeTest() throws InterruptedException {
+      webAutomationAdvancePage.selectDeviceType("Tablet");
+      Thread.sleep(4000);
+    }
 
 
     @AfterTest
