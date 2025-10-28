@@ -32,8 +32,16 @@ public class NdosiTests extends Base{
 
     @Test(dependsOnMethods = "clickLoginTests")
     public void verifyWelcomeHeading() {
-        learningMaterialPage.verifyHeading();}
+        learningMaterialPage.verifyHeading();
 
+
+    }
+
+    @Test(dependsOnMethods = "verifyWelcomeHeading")
+    public void clickWebAutomationAdvanceTab() throws InterruptedException {
+        learningMaterialPage.clickWebAutomationAdvanceTab();
+      Thread.sleep(2000);
+    }
 
 
 
