@@ -14,5 +14,7 @@ public class InventoryPage {
       this.driver=driver;
   }
 
-
+    public void veryInventoryPageIsDisplayed(){
+      inventoryTitle_id.isDisplayed();
+    }
 }

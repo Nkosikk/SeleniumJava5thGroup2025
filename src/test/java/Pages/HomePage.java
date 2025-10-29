@@ -9,7 +9,9 @@ import java.time.Duration;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
-public class HomePage {
+public class
+
+HomePage {
 
     WebDriver driver;
 
