@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleContains;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
@@ -23,6 +24,11 @@ public class WebAutomationAdvancePage {
     @FindBy(id = "brand")
     WebElement tabletBrand_id;
 
+    //@FindBy(id = "storage-64GB")
+    //WebElement storage64GB.id;
+    @FindBy(id = "color")
+    WebElement deviceColor_id;
+
     public WebAutomationAdvancePage(WebDriver driver){
         this.driver=driver;
     }
@@ -38,6 +44,13 @@ public class WebAutomationAdvancePage {
     public void selectTabletBrand(String deviceBrand){
         tabletBrand_id.sendKeys(deviceBrand);
     }
+    //public void selectStorageSize ( String storageSize){
+      //  storage64GB.id.
+   // }
+    public void selectDeviceColor(String deviceColor){
+        deviceColor_id.sendKeys(deviceColor);
+    }
+
 
 
 
