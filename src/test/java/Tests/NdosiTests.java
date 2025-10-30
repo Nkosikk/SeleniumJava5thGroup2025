@@ -17,12 +17,12 @@ public class NdosiTests extends Base{
 
     @Test(dependsOnMethods = "clickLearningMaterialTests")
     public void enterLoginEmail(){
-        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterLoginEmail("soundytest@gmail.com");
     }
 
     @Test(dependsOnMethods = "enterLoginEmail")
     public void enterPasswordTests() {
-        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.enterPasswordId("12345678");
     }
 
     @Test(dependsOnMethods = "enterPasswordTests")
@@ -51,13 +51,12 @@ public class NdosiTests extends Base{
       webAutomationAdvancePage.selectDeviceType("Tablet");
       Thread.sleep(4000);
     }
-@Test(dependsOnMethods = "selectDeviceTypeTest")
-    public void selectDeviceStorageTests() throws InterruptedException {
-        webAutomationAdvancePage.selectDeviceStorage();
-        Thread.sleep(2000);
+
+    @Test(dependsOnMethods = "selectDeviceTypeTest")
+    public void selectDeviceBrandTest() throws InterruptedException {
+        webAutomationAdvancePage.selectTabletBrand("Samsung");
+        Thread.sleep(4000);
     }
-
-
     @AfterTest
     public void closeBrowser(){
         driver.quit();
