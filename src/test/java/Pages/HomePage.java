@@ -30,9 +30,4 @@ public class HomePage {
         LearningMaterial_id.click();
     }
 
-
-
-
-
-
 }
