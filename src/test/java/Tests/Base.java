@@ -5,6 +5,7 @@ import Pages.LearningMaterialPage;
 import Pages.LoginPage;
 import Pages.WebAutomationAdvancePage;
 import Utils.BrowserFactory;
+import Utils.TakeScreenshots;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -17,5 +18,6 @@ public class Base {
     LoginPage loginPage= PageFactory.initElements(driver, LoginPage.class);
     LearningMaterialPage learningMaterialPage = PageFactory.initElements(driver, LearningMaterialPage.class);
     WebAutomationAdvancePage webAutomationAdvancePage = PageFactory.initElements(driver, WebAutomationAdvancePage.class);
+    TakeScreenshots takeScreenshots = new TakeScreenshots();
 
 }

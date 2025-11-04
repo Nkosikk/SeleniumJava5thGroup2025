@@ -1,5 +1,6 @@
 package Tests;
 
+import Utils.TakeScreenshots;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
@@ -13,6 +14,7 @@ public class NdosiTests extends Base{
     @Test(dependsOnMethods = "verifyHomePageIsDisplayedTests")
     public void clickLearningMaterialTests() {
         homePage.clickLearningMaterial();
+        takeScreenshots.takesSnapShot(driver, "LearningMaterialPage");
     }
 
     @Test(dependsOnMethods = "clickLearningMaterialTests")
