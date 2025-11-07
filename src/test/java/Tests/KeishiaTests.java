@@ -1,11 +1,67 @@
 package Tests;
 
-import Utils.TakeScreenshots;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 @Test
-public class NdosiTests extends Base{
+public class KeishiaTests extends Base{
+
+
+    public void ValidLogin(){
+        homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+    }
+
+    public void InValidLogin(){
+        homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail1.com");
+        loginPage.enterPasswordId("D3vt3sting$1");
+        loginPage.clickLogin();
+
+    }
+
+    public void VerifyExtraSpaces(){
+        homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail(" kb@gmail1.com ");
+        loginPage.enterPasswordId(" D3vt3sting$1 ");
+        loginPage.clickLogin();
+
+
+    }
+
+    public void SelectLogout(){
+        homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        loginPage.clickLogoutButton();
+
+
+
+
+    }
+
+    public void RegistrationMismatch(){
+
+    }
+
+    public void BadEmailFormat(){
+
+    }
+
+    public void VerifyPasswordLength(){
+
+    }
+
+    public void SuccessfullyRegistration(){
+
+    }
 
 
     public void verifyHomePageIsDisplayedTests(){

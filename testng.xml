@@ -6,7 +6,7 @@
     </listeners>
     <test name="Ndosi Tests">
         <classes>
-            <class name="Tests.NdosiTests"></class>
+            <class name="Tests.KeishiaTests"></class>
         </classes>
     </test>
 

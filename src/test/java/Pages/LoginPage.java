@@ -1,11 +1,9 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
 
 import java.time.Duration;
 
@@ -20,6 +18,9 @@ public class LoginPage {
     WebElement loginPassword_id;
     @FindBy(id = "login-submit")
     WebElement loginSubmit_id;
+    @FindBy (id = "logout-button")
+    WebElement logout_id;
+
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -37,5 +38,14 @@ public class LoginPage {
     public void clickLogin() {
         loginSubmit_id.click();
     }
-}
 
+    public void clickLogoutButton(){
+        logout_id.click();
+    }
+
+
+
+
+
+
+}
