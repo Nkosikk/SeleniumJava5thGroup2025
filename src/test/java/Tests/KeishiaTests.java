@@ -171,35 +171,40 @@ public class KeishiaTests extends Base {
 
     }
 
-        public void SelectDevice (){
-            homePage.verifyHomePageIsDisplayed();
-            homePage.clickLearningMaterial();
-            loginPage.enterLoginEmail("kb@gmail.com");
-            loginPage.enterPasswordId("D3vt3sting#");
-            loginPage.clickLogin();
-            webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
-            webAutomationAdvancePage.selectDeviceType();
-            webAutomationAdvancePage.SelectDeviceStorage();
-            webAutomationAdvancePage.SelectDeviceQuantity();
-            webAutomationAdvancePage.EnterAddress("");
+    //Fix up!!!
+    public void WizardStep1FieldsMissing() {
+        homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        homePage.SelectWebAutomationButton();
+        webAutomationAdvancePage.selectDeviceType("Tablet");
+        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.SelectDeviceStorage();
+        webAutomationAdvancePage.SelectDeviceQuantity();
+        webAutomationAdvancePage.EnterAddress("");
+        webAutomationAdvancePage.SelectNextButton();
+    }
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-            try {
-                Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-                String alertText = alert.getText();
-                System.out.println("Alert text: " + alertText);
+    public void WizardStep1AllFieldsInserted() {
+        homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Tablet");
+        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.SelectDeviceStorage();
+        webAutomationAdvancePage.SelectDeviceColour("White");
+        webAutomationAdvancePage.SelectDeviceQuantity();
+        webAutomationAdvancePage.EnterAddress("12345@gmail.com");
+        webAutomationAdvancePage.SelectNextButton();
 
-                Assert.assertEquals("Registration successful! You can now login with your credentials.", "Registration successful! You can now login with your credentials.", alertText);
-
-
-                alert.accept();
-            } catch (TimeoutException e) {
-                Assert.fail("Expected alert did not appear!");
-            }
-
-
-
-        }
+    }
 
     @AfterTest
     public void closeBrowser() {

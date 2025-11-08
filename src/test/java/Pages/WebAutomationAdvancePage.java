@@ -17,6 +17,7 @@ public class WebAutomationAdvancePage {
     @FindBy(id = "inventory-title")
     WebElement inventoryHeader_id;
 
+
     @FindBy(id = "deviceType")
     WebElement deviceTypeDropDown_id;
 
@@ -35,6 +36,12 @@ public class WebAutomationAdvancePage {
     @FindBy (id = "address")
     WebElement EnterAddress_id;
 
+    @FindBy (id = "color")
+    WebElement SelectDeviceColour_id;
+
+    @FindBy (id = "inventory-next-btn")
+    WebElement SelectNextButton_id;
+
 
 
 
@@ -44,7 +51,7 @@ public class WebAutomationAdvancePage {
     }
 
     public void verifyInventoryHeaderIsDisplayed(){
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(inventoryHeader_id));
+
         inventoryHeader_id.isDisplayed();
     }
     public void selectDeviceType(String deviceType){
@@ -67,9 +74,15 @@ public class WebAutomationAdvancePage {
         EnterAddress_id.sendKeys(address);
     }
 
-    public void SelectDeviceColour(){
-        SelectColour_id.isSelected()
+    public void SelectDeviceColour(String colour){
+        SelectColour_id.sendKeys (colour);
     }
+
+    public void SelectNextButton(){
+
+        SelectNextButton_id.click();
+    }
+
 
 
 

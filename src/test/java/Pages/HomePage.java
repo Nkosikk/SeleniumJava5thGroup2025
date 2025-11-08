@@ -19,8 +19,16 @@ public class HomePage {
     @FindBy(id = "nav-btn-practice")
     WebElement LearningMaterial_id;
 
+    @FindBy (id = "tab-btn-web")
+    WebElement SelectWebAutomation_id;
+
     public HomePage(WebDriver driver){
         this.driver=driver;
+    }
+
+    public void SelectWebAutomationButton(){
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(SelectWebAutomation_id));
+        SelectWebAutomation_id.click();
     }
 
     public void verifyHomePageIsDisplayed(){
@@ -32,5 +40,7 @@ public class HomePage {
         LearningMaterial_id.click();
 
     }
+
+
 
 }
