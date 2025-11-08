@@ -27,7 +27,7 @@ public class LoginPage {
     }
 
     public void enterLoginEmail(String email) {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(loginEmail_id));
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(visibilityOf(loginEmail_id));
         loginEmail_id.sendKeys(email);
     }
 
@@ -40,6 +40,7 @@ public class LoginPage {
     }
 
     public void clickLogoutButton(){
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(visibilityOf(logout_id));
         logout_id.click();
     }
 

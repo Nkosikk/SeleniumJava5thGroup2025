@@ -23,6 +23,9 @@ public class WebAutomationAdvancePage {
     @FindBy(id = "brand")
     WebElement tabletBrand_id;
 
+    @FindBy (id = "storage-64GB")
+    WebElement SelectStorage_id;
+
     public WebAutomationAdvancePage(WebDriver driver){
         this.driver=driver;
     }
