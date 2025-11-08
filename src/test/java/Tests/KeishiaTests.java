@@ -45,7 +45,7 @@ public class KeishiaTests extends Base {
         }
     }
 
-    public void ExtraSpaces(){
+    public void ExtraSpaces() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail(" kb@gmail.com  ");
@@ -53,6 +53,7 @@ public class KeishiaTests extends Base {
         loginPage.clickLogin();
 
     }
+
     public void SelectLogout() throws InterruptedException {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
@@ -62,7 +63,8 @@ public class KeishiaTests extends Base {
         loginPage.clickLogoutButton();
 
     }
-    public void RegistrationPasswordMismatch(){
+
+    public void RegistrationPasswordMismatch() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
@@ -78,7 +80,7 @@ public class KeishiaTests extends Base {
             String alertText = alert.getText();
             System.out.println("Alert text: " + alertText);
 
-            Assert.assertEquals("Passwords do not match!", "Passwords do not match!" , alertText);
+            Assert.assertEquals("Passwords do not match!", "Passwords do not match!", alertText);
 
 
             alert.accept();
@@ -89,7 +91,7 @@ public class KeishiaTests extends Base {
 
     }
 
-    public void BadEmailFormat(){
+    public void BadEmailFormat() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
@@ -105,7 +107,7 @@ public class KeishiaTests extends Base {
             String alertText = alert.getText();
             System.out.println("Alert text: " + alertText);
 
-            Assert.assertEquals("Please enter a valid email address", "Please enter a valid email address" , alertText);
+            Assert.assertEquals("Please enter a valid email address", "Please enter a valid email address", alertText);
 
 
             alert.accept();
@@ -116,7 +118,7 @@ public class KeishiaTests extends Base {
 
     }
 
-    public void VerifyPasswordLength(){
+    public void VerifyPasswordLength() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
@@ -133,7 +135,7 @@ public class KeishiaTests extends Base {
             String alertText = alert.getText();
             System.out.println("Alert text: " + alertText);
 
-            Assert.assertEquals("Password must be at least 8 characters long", "Password must be at least 8 characters long" , alertText);
+            Assert.assertEquals("Password must be at least 8 characters long", "Password must be at least 8 characters long", alertText);
 
 
             alert.accept();
@@ -143,7 +145,7 @@ public class KeishiaTests extends Base {
 
     }
 
-    public void SuccessfullyRegistration(){
+    public void SuccessfullyRegistration() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
@@ -159,7 +161,7 @@ public class KeishiaTests extends Base {
             String alertText = alert.getText();
             System.out.println("Alert text: " + alertText);
 
-            Assert.assertEquals("Registration successful! You can now login with your credentials.", "Registration successful! You can now login with your credentials." , alertText);
+            Assert.assertEquals("Registration successful! You can now login with your credentials.", "Registration successful! You can now login with your credentials.", alertText);
 
 
             alert.accept();
@@ -167,16 +169,44 @@ public class KeishiaTests extends Base {
             Assert.fail("Expected alert did not appear!");
         }
 
-
-
-
-
     }
+
+        public void SelectDevice (){
+            homePage.verifyHomePageIsDisplayed();
+            homePage.clickLearningMaterial();
+            loginPage.enterLoginEmail("kb@gmail.com");
+            loginPage.enterPasswordId("D3vt3sting#");
+            loginPage.clickLogin();
+            webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+            webAutomationAdvancePage.selectDeviceType();
+            webAutomationAdvancePage.SelectDeviceStorage();
+            webAutomationAdvancePage.SelectDeviceQuantity();
+            webAutomationAdvancePage.EnterAddress("");
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            try {
+                Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+                String alertText = alert.getText();
+                System.out.println("Alert text: " + alertText);
+
+                Assert.assertEquals("Registration successful! You can now login with your credentials.", "Registration successful! You can now login with your credentials.", alertText);
+
+
+                alert.accept();
+            } catch (TimeoutException e) {
+                Assert.fail("Expected alert did not appear!");
+            }
+
+
+
+        }
+
     @AfterTest
-    public void closeBrowser(){
-    driver.quit();
+    public void closeBrowser() {
+        driver.quit();
     }
 }
+
 
 
 

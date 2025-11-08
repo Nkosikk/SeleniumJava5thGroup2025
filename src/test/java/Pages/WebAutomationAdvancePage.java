@@ -26,6 +26,19 @@ public class WebAutomationAdvancePage {
     @FindBy (id = "storage-64GB")
     WebElement SelectStorage_id;
 
+    @FindBy (id = "white")
+    WebElement SelectColour_id;
+
+    @FindBy (id = "quantity")
+    WebElement SelectQuantity_id;
+
+    @FindBy (id = "address")
+    WebElement EnterAddress_id;
+
+
+
+
+
     public WebAutomationAdvancePage(WebDriver driver){
         this.driver=driver;
     }
@@ -41,6 +54,26 @@ public class WebAutomationAdvancePage {
     public void selectTabletBrand(String deviceBrand){
         tabletBrand_id.sendKeys(deviceBrand);
     }
+
+    public void SelectDeviceStorage (){
+        SelectStorage_id.click();
+    }
+    public void SelectDeviceQuantity(){
+        SelectQuantity_id.clear();
+        SelectQuantity_id.sendKeys("2");
+    }
+
+    public void EnterAddress(String address){
+        EnterAddress_id.sendKeys(address);
+    }
+
+    public void SelectDeviceColour(){
+        SelectColour_id.isSelected()
+    }
+
+
+
+
 
 
 
