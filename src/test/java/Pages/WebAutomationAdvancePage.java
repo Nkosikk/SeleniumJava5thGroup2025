@@ -51,6 +51,7 @@ public class WebAutomationAdvancePage {
     }
 
     public void verifyInventoryHeaderIsDisplayed(){
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(inventoryHeader_id));
 
         inventoryHeader_id.isDisplayed();
     }
@@ -75,7 +76,9 @@ public class WebAutomationAdvancePage {
     }
 
     public void SelectDeviceColour(String colour){
-        SelectColour_id.sendKeys (colour);
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(SelectDeviceColour_id));
+
+        SelectDeviceColour_id.sendKeys (colour);
     }
 
     public void SelectNextButton(){

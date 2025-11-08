@@ -22,6 +22,9 @@ public class HomePage {
     @FindBy (id = "tab-btn-web")
     WebElement SelectWebAutomation_id;
 
+    @FindBy (id = "logout-button")
+    WebElement logout_id;
+
     public HomePage(WebDriver driver){
         this.driver=driver;
     }
@@ -39,6 +42,11 @@ public class HomePage {
     public void clickLearningMaterial(){
         LearningMaterial_id.click();
 
+    }
+
+    public void clickLogoutButton(){
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(visibilityOf(logout_id));
+        logout_id.click();
     }
 
 

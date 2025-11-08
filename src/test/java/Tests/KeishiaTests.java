@@ -21,6 +21,7 @@ public class KeishiaTests extends Base {
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
         loginPage.clickLogin();
+        homePage.clickLogoutButton();
     }
 
     public void InValidLogin() {
@@ -51,6 +52,7 @@ public class KeishiaTests extends Base {
         loginPage.enterLoginEmail(" kb@gmail.com  ");
         loginPage.enterPasswordId("  D3vt3sting#  ");
         loginPage.clickLogin();
+        homePage.clickLogoutButton();
 
     }
 
@@ -60,7 +62,7 @@ public class KeishiaTests extends Base {
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
         loginPage.clickLogin();
-        loginPage.clickLogoutButton();
+        homePage.clickLogoutButton();
 
     }
 
@@ -178,14 +180,15 @@ public class KeishiaTests extends Base {
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
         loginPage.clickLogin();
-        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
         homePage.SelectWebAutomationButton();
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
         webAutomationAdvancePage.selectDeviceType("Tablet");
         webAutomationAdvancePage.selectTabletBrand("Apple");
         webAutomationAdvancePage.SelectDeviceStorage();
         webAutomationAdvancePage.SelectDeviceQuantity();
         webAutomationAdvancePage.EnterAddress("");
         webAutomationAdvancePage.SelectNextButton();
+        homePage.clickLogoutButton();
     }
 
     public void WizardStep1AllFieldsInserted() {
@@ -203,8 +206,10 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.SelectDeviceQuantity();
         webAutomationAdvancePage.EnterAddress("12345@gmail.com");
         webAutomationAdvancePage.SelectNextButton();
-
+        homePage.clickLogoutButton();
     }
+
+
 
     @AfterTest
     public void closeBrowser() {

@@ -18,8 +18,7 @@ public class LoginPage {
     WebElement loginPassword_id;
     @FindBy(id = "login-submit")
     WebElement loginSubmit_id;
-    @FindBy (id = "logout-button")
-    WebElement logout_id;
+
 
 
     public LoginPage(WebDriver driver) {
@@ -39,10 +38,7 @@ public class LoginPage {
         loginSubmit_id.click();
     }
 
-    public void clickLogoutButton(){
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(visibilityOf(logout_id));
-        logout_id.click();
-    }
+
 
 
 
