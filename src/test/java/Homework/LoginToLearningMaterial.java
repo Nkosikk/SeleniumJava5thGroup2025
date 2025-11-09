@@ -137,4 +137,4 @@ public class LoginToLearningMaterial {
     public void closeBrowser(){
         driver.quit();
     }
-    }
+}
