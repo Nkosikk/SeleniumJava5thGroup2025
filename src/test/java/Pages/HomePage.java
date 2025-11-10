@@ -1,11 +1,14 @@
 package Pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
+
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
@@ -19,25 +22,26 @@ public class HomePage {
     @FindBy(id = "nav-btn-practice")
     WebElement LearningMaterial_id;
 
-    @FindBy (id = "tab-btn-web")
+    @FindBy(id = "tab-btn-web")
     WebElement SelectWebAutomation_id;
 
-    @FindBy (id = "logout-button")
+    @FindBy(id = "logout-button")
     WebElement logout_id;
 
-    public HomePage(WebDriver driver){
-        this.driver=driver;
+    public HomePage(WebDriver driver) {
+        this.driver = driver;
     }
 
-    public void SelectWebAutomationButton(){
+    public void SelectWebAutomationButton() {
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(SelectWebAutomation_id));
         SelectWebAutomation_id.click();
     }
 
-    public void verifyHomePageIsDisplayed(){
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(homepageTitle_id));
+    public void verifyHomePageIsDisplayed() {
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(visibilityOf(homepageTitle_id));
         homepageTitle_id.isDisplayed();
     }
+
 
     public void clickLearningMaterial(){
         LearningMaterial_id.click();

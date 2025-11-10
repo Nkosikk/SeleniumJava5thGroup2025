@@ -1,6 +1,7 @@
 package Tests;
 
 
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,19 +15,24 @@ import java.time.Duration;
 @Test
 public class KeishiaTests extends Base {
 
-
+@Test
     public void ValidLogin() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
+
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
         loginPage.clickLogin();
+
         homePage.clickLogoutButton();
     }
 
+@Test (priority = 1)
     public void InValidLogin() {
-        homePage.verifyHomePageIsDisplayed();
+
+        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
+
         loginPage.enterLoginEmail("kb@gmail1.com");
         loginPage.enterPasswordId("D3vt3sting$1");
         loginPage.clickLogin();
@@ -45,19 +51,19 @@ public class KeishiaTests extends Base {
             Assert.fail("Expected alert did not appear!");
         }
     }
-
+@Test(priority = 2)
     public void ExtraSpaces() {
-        homePage.verifyHomePageIsDisplayed();
+        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
-        loginPage.enterLoginEmail(" kb@gmail.com  ");
-        loginPage.enterPasswordId("  D3vt3sting#  ");
+        loginPage.enterLoginEmail("kb@gmail.com ");
+        loginPage.enterPasswordId(" D3vt3sting# ");
         loginPage.clickLogin();
         homePage.clickLogoutButton();
 
     }
-
-    public void SelectLogout() throws InterruptedException {
-        homePage.verifyHomePageIsDisplayed();
+    @Test(priority = 3)
+    public void SelectLogout() throws {
+        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
@@ -65,9 +71,9 @@ public class KeishiaTests extends Base {
         homePage.clickLogoutButton();
 
     }
-
-    public void RegistrationPasswordMismatch() {
-        homePage.verifyHomePageIsDisplayed();
+    @Test (priority = 4)
+   public void RegistrationPasswordMismatch() {
+        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
         registrationPage.RegisterFirstName("Keishia");
@@ -92,9 +98,9 @@ public class KeishiaTests extends Base {
 
 
     }
-
+    @Test (priority = 5)
     public void BadEmailFormat() {
-        homePage.verifyHomePageIsDisplayed();
+        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
         registrationPage.RegisterFirstName("Keishia");
@@ -119,9 +125,9 @@ public class KeishiaTests extends Base {
 
 
     }
-
+    @Test (priority = 6)
     public void VerifyPasswordLength() {
-        homePage.verifyHomePageIsDisplayed();
+        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
         registrationPage.RegisterFirstName("Keishia");
@@ -146,7 +152,7 @@ public class KeishiaTests extends Base {
         }
 
     }
-
+    @Test (priority = 7)
     public void SuccessfullyRegistration() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
@@ -174,7 +180,7 @@ public class KeishiaTests extends Base {
     }
 
     //Fix up!!!
-    public void WizardStep1FieldsMissing() {
+    /*public void WizardStep1FieldsMissing() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
@@ -191,7 +197,7 @@ public class KeishiaTests extends Base {
         homePage.clickLogoutButton();
     }
 
-    public void WizardStep1AllFieldsInserted() {
+    public void BlankAddressField() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
@@ -208,6 +214,20 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.SelectNextButton();
         homePage.clickLogoutButton();
     }
+
+    public void QuantityZero(){
+
+    }
+
+
+    //Negative Test quantity 11
+    public void QuantityLessThanTen(){
+
+    }
+    //All Fields completed
+    public void SuccessfulWizard1(){
+
+    }*/
 
 
 

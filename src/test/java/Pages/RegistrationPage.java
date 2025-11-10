@@ -58,7 +58,7 @@ public class RegistrationPage {
     }
 
     public void SelectCreateAccount(){
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(visibilityOf(CreateAccount_id));
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(CreateAccount_id));
         CreateAccount_id.click();
     }
 }
