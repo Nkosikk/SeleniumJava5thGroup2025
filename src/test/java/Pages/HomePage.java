@@ -28,6 +28,9 @@ public class HomePage {
     @FindBy(id = "logout-button")
     WebElement logout_id;
 
+    @FindBy(id = "nav-btn-overview")
+    WebElement SelectHomeButton_id;
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
@@ -51,6 +54,10 @@ public class HomePage {
     public void clickLogoutButton(){
         new WebDriverWait(driver, Duration.ofSeconds(20)).until(visibilityOf(logout_id));
         logout_id.click();
+    }
+
+    public void ClickHomeButton(){
+        SelectHomeButton_id.click();
     }
 
 

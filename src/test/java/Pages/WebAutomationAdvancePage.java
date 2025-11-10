@@ -1,13 +1,15 @@
 package Pages;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleContains;
+
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class WebAutomationAdvancePage {
@@ -66,9 +68,11 @@ public class WebAutomationAdvancePage {
     public void SelectDeviceStorage (){
         SelectStorage_id.click();
     }
-    public void SelectDeviceQuantity(){
+
+    public void SelectDeviceQuantity() {
+
         SelectQuantity_id.clear();
-        SelectQuantity_id.sendKeys("2");
+        SelectQuantity_id.sendKeys("0");
     }
 
     public void EnterAddress(String address){
@@ -85,6 +89,8 @@ public class WebAutomationAdvancePage {
 
         SelectNextButton_id.click();
     }
+
+
 
 
 

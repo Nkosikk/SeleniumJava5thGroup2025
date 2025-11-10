@@ -54,6 +54,7 @@ public class KeishiaTests extends Base {
 @Test(priority = 2)
     public void ExtraSpaces() {
         //homePage.verifyHomePageIsDisplayed();
+
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com ");
         loginPage.enterPasswordId(" D3vt3sting# ");
@@ -62,7 +63,7 @@ public class KeishiaTests extends Base {
 
     }
     @Test(priority = 3)
-    public void SelectLogout() throws {
+    public void SelectLogout(){
         //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
@@ -100,7 +101,7 @@ public class KeishiaTests extends Base {
     }
     @Test (priority = 5)
     public void BadEmailFormat() {
-        //homePage.verifyHomePageIsDisplayed();
+        homePage.ClickHomeButton();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
         registrationPage.RegisterFirstName("Keishia");
@@ -128,6 +129,7 @@ public class KeishiaTests extends Base {
     @Test (priority = 6)
     public void VerifyPasswordLength() {
         //homePage.verifyHomePageIsDisplayed();
+        homePage.ClickHomeButton();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
         registrationPage.RegisterFirstName("Keishia");
@@ -154,7 +156,8 @@ public class KeishiaTests extends Base {
     }
     @Test (priority = 7)
     public void SuccessfullyRegistration() {
-        homePage.verifyHomePageIsDisplayed();
+        homePage.ClickHomeButton();
+        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
         registrationPage.RegisterFirstName("Keishia");
@@ -179,7 +182,33 @@ public class KeishiaTests extends Base {
 
     }
 
-    //Fix up!!!
+    public void QuantityZero() throws InterruptedException {
+        homePage.ClickHomeButton();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Tablet");
+        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.SelectDeviceStorage();
+        webAutomationAdvancePage.SelectDeviceQuantity();
+        webAutomationAdvancePage.EnterAddress("test");
+        Thread.sleep(2000);
+        webAutomationAdvancePage.SelectNextButton();
+        //
+        //webAutomationAdvancePage.SelectNextButton();
+        //homePage.clickLogoutButton();
+
+
+        String actualMsg = webAutomationAdvancePage.getQuantityValidationMessage();
+        Assert.assertEquals(actualMsg.trim(), "QUANTITY MUST BE ≥ 1", "Validation message mismatch!");
+
+
+    }
+
+
     /*public void WizardStep1FieldsMissing() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
@@ -195,7 +224,7 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.EnterAddress("");
         webAutomationAdvancePage.SelectNextButton();
         homePage.clickLogoutButton();
-    }
+    }*/
 
     public void BlankAddressField() {
         homePage.verifyHomePageIsDisplayed();
@@ -215,9 +244,7 @@ public class KeishiaTests extends Base {
         homePage.clickLogoutButton();
     }
 
-    public void QuantityZero(){
 
-    }
 
 
     //Negative Test quantity 11
@@ -227,7 +254,7 @@ public class KeishiaTests extends Base {
     //All Fields completed
     public void SuccessfulWizard1(){
 
-    }*/
+    }
 
 
 
