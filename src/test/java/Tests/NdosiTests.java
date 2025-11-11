@@ -61,6 +61,10 @@ public class NdosiTests extends Base{
     public void selectDeviceColorTest(){
         webAutomationAdvancePage.selectDeviceColor("White");
     }
+    @Test(dependsOnMethods = "selectDeviceColorTest")
+    public void enterAddressDetailsTest() {
+        webAutomationAdvancePage.enterAddressDetails("1233 street welkom");
+    }
     @AfterTest
     public void closeBrowser(){
         driver.quit();

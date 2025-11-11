@@ -29,6 +29,9 @@ public class WebAutomationAdvancePage {
     @FindBy(id = "color")
     WebElement deviceColor_id;
 
+    @FindBy(id = "address")
+    WebElement enterAddress_id;
+
     public WebAutomationAdvancePage(WebDriver driver){
         this.driver=driver;
     }
@@ -50,9 +53,10 @@ public class WebAutomationAdvancePage {
     public void selectDeviceColor(String deviceColor){
         deviceColor_id.sendKeys(deviceColor);
     }
+    public void enterAddressDetails(String address) {
+        enterAddress_id.sendKeys(address);
 
-
-
+    }
 
 
 
