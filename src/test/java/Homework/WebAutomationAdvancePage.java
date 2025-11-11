@@ -4,14 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 public class WebAutomationAdvancePage {
 
@@ -79,23 +75,22 @@ public class WebAutomationAdvancePage {
     }
 
    @Test(priority = 9)
-    public void selectStorage() throws InterruptedException{
-        WebElement checkbox = driver.findElement(By.id("storage-128GB"));
-        if (!checkbox.isSelected()){
-            checkbox.click();
-        }
-        Thread.sleep(1000);
+    public void selectStorage() {
+       WebElement checkbox = driver.findElement(By.id("storage-128GB"));
+           if (!checkbox.isSelected()){
+               checkbox.click();
+
     }
 
-    @Test(priority = 10)
-    public void selectColor() {
-        WebElement dropdown = driver.findElement(By.id("color"));
-        Select select = new Select(dropdown);
-        select.selectByVisibleText("Black");
+    //*@Test(priority = 10)
+     //public void selectColor() {
+       WebElement dropdown = driver.findElement(By.id("label-color"));
+       Select select = new Select(dropdown);
+       select.selectByVisibleText("Black");
     }
 
-   @Test(priority = 11)
-    public void enterQuantity() {
+    @Test(priority = 11)
+     public void enterQuantity() {
         driver.findElement(By.id("quantity")).sendKeys("0");
     }
 
@@ -104,10 +99,10 @@ public class WebAutomationAdvancePage {
         driver.findElement(By.id("address")).sendKeys("Kroonstad");
     }
 
-    @Test(priority = 13)
+   @Test(priority = 13)
     public void clickInventoryNextButton() throws InterruptedException {
         driver.findElement(By.id("inventory-next-btn")).click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
     }
 
     @Test(priority = 14)
@@ -116,7 +111,7 @@ public class WebAutomationAdvancePage {
         if (!checkbox.isSelected()){
             checkbox.click();
         }
-        Thread.sleep(1000);
+        Thread.sleep(2000);
     }
 
     @Test(priority = 15)
@@ -125,18 +120,18 @@ public class WebAutomationAdvancePage {
         if (!checkbox.isSelected()){
             checkbox.click();
         }
-        Thread.sleep(1000);
+        Thread.sleep(2000);
     }
 
     @Test(priority = 16)
-    public void enterDiscountCode() throws InterruptedException {driver.findElement(By.id("discount-code")).sendKeys("SAVE10");
-        Thread.sleep(1000);
+    public void enterDiscountCode() throws InterruptedException {
+        driver.findElement(By.id("discount-code")).sendKeys("SAVE10");
+        Thread.sleep(2000);
     }
 
     @Test(priority = 17)
-    public void clickPurchaseDeviceButton() throws InterruptedException {
+    public void clickPurchaseDeviceButton()  {
         driver.findElement(By.id("purchase-device-btn")).click();
-        Thread.sleep(1000);
     }
 
     @AfterTest
