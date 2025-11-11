@@ -1,5 +1,6 @@
 package Tests;
 
+import Utils.ReadFromFile;
 import Utils.TakeScreenshots;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
@@ -19,12 +20,12 @@ public class NdosiTests extends Base{
 
     @Test(dependsOnMethods = "clickLearningMaterialTests")
     public void enterLoginEmail(){
-        loginPage.enterLoginEmail("soundytest@gmail.com");
+        loginPage.enterLoginEmail(readFromFile.username);
     }
 
     @Test(dependsOnMethods = "enterLoginEmail")
     public void enterPasswordTests() {
-        loginPage.enterPasswordId("12345678");
+        loginPage.enterPasswordId(readFromFile.password);
     }
 
     @Test(dependsOnMethods = "enterPasswordTests")
