@@ -1,17 +1,26 @@
-package Homework;
+package Pages;
 
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.AfterTest;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
+
 
 public class WebAutomationAdvancePage {
 
     WebDriver driver;
+
+    @FindBy(id = "inventory-title")
+    WebElement inventoryHeader_id;
 
     @BeforeTest
     public void launchBrowser() {
@@ -54,10 +63,15 @@ public class WebAutomationAdvancePage {
         Thread.sleep(2000);
     }
 
-   @Test(priority = 6)
+    @Test(priority = 6)
     public void clickWebAutomationAdvancePage() throws InterruptedException {
         driver.findElement(By.id("tab-btn-web")).click();
         Thread.sleep(2000);
+    }
+
+    public void verifyInventoryHeaderIsDisplayed(){
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(inventoryHeader_id));
+        inventoryHeader_id.isDisplayed();
     }
 
     @Test(priority = 7)
@@ -67,39 +81,39 @@ public class WebAutomationAdvancePage {
         select.selectByVisibleText("Phone");
     }
 
-   @Test(priority = 8)
+    @Test(priority = 8)
     public void clickBrand() {
         WebElement dropdown = driver.findElement(By.id("brand"));
         Select select = new Select(dropdown);
         select.selectByVisibleText("Apple");
     }
 
-   @Test(priority = 9)
+    @Test(priority = 9)
     public void selectStorage() {
        WebElement checkbox = driver.findElement(By.id("storage-128GB"));
-           if (!checkbox.isSelected()){
-               checkbox.click();
-
+       if (!checkbox.isSelected()) {
+           checkbox.click();
+       }
     }
 
-    //*@Test(priority = 10)
-     //public void selectColor() {
-       WebElement dropdown = driver.findElement(By.id("label-color"));
+    @Test(priority = 10)
+    public void chooseColor() {
+       WebElement dropdown = driver.findElement(By.name("color"));
        Select select = new Select(dropdown);
        select.selectByVisibleText("Black");
     }
 
     @Test(priority = 11)
-     public void enterQuantity() {
+    public void enterQuantity() {
         driver.findElement(By.id("quantity")).sendKeys("0");
     }
 
-   @Test(priority = 12)
+    @Test(priority = 12)
     public void enterDeliveryAdress() {
         driver.findElement(By.id("address")).sendKeys("Kroonstad");
     }
 
-   @Test(priority = 13)
+    @Test(priority = 13)
     public void clickInventoryNextButton() throws InterruptedException {
         driver.findElement(By.id("inventory-next-btn")).click();
         Thread.sleep(2000);

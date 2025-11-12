@@ -1,4 +1,4 @@
-package Homework;
+package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +19,6 @@ public class LoginPage {
 
     @Test
     public void startBrowser() throws InterruptedException {
-        // driver = new ChromeDriver();
         driver.get("https://www.ndosiautomation.co.za/");
         driver.manage().window().maximize();
         Thread.sleep(2000);
@@ -51,4 +50,5 @@ public class LoginPage {
         driver.findElement(By.id("login-submit")).click();
         Thread.sleep(2000);
     }
+
 }

@@ -18,7 +18,7 @@ public class HomePage {
         this.driver=driver;
     }
 
-    public void verifyHomePageIsDisplayed(){
+    public void verifyHomePageIsDisplayed() {
         homepageTitle_id.isDisplayed();
     }
 
