@@ -8,6 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class UpdateExcelFile {
@@ -36,6 +37,16 @@ public class UpdateExcelFile {
                     break; // Exit loop after updating
                 }
             }
+
+            // Close input stream before writing back
+            fis.close();
+
+            // Write the updated workbook back to the file
+            try (FileOutputStream fos = new FileOutputStream(filePath)) {
+                workbook.write(fos);
+            }
+
+            workbook.close();
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
