@@ -219,7 +219,7 @@ public class KeishiaTests extends Base {
 
     @Test (priority = 9)
     //All Fields completed
-    public void SuccessfulWizard1(){
+    public void SuccessfulWizard1() throws InterruptedException {
         homePage.ClickHomeButton();
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
@@ -235,11 +235,43 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.SelectDeviceQuantity();
         webAutomationAdvancePage.EnterAddress("test");
         webAutomationAdvancePage.SelectNextButton();
+        Thread.sleep(2000);
        // homePage.clickLogoutButton();
 }
 
     public void PricingPanelNoDevice(){
+        homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+        webAutomationAdvancePage.EnterAddress("test");
+        webAutomationAdvancePage.SelectNextButton();
+
+
+
+
+
 }
+
+    public void PricingPanelPhone64GBTQty1(){
+
+
+    }
+    public void PricingPanelPhone128GBQty2(){
+
+
+    }
+
+    public void PricingPanelLaptop256GBQty1(){
+
+
+    }
+    public void ClearDevicePricingResets(){
+
+
+    }
 
 
 
