@@ -8,7 +8,7 @@ import java.io.FileInputStream;
 
 public class ReadFromFile {
 
-    private static String testData = System.getProperty("user.dir")+"/src/test/java/TestData/testData.xlsx";
+    private static final String testData = System.getProperty("user.dir")+"/src/test/java/TestData/testData.xlsx";
 
     static FileInputStream fs;
 
