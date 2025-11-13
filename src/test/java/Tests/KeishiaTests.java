@@ -1,16 +1,18 @@
 package Tests;
 
-
-
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.time.Duration;
+
 
 @Test
 public class KeishiaTests extends Base {
@@ -97,7 +99,6 @@ public class KeishiaTests extends Base {
             Assert.fail("Expected alert did not appear!");
         }
 
-
     }
     @Test (priority = 5)
     public void BadEmailFormat() {
@@ -166,6 +167,7 @@ public class KeishiaTests extends Base {
         registrationPage.RegisterPassword("D3vt3sting#");
         registrationPage.RegisterConfirmPassword("D3vt3sting#");
         registrationPage.SelectCreateAccount();
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
@@ -182,51 +184,9 @@ public class KeishiaTests extends Base {
 
     }
 
-    public void QuantityZero() throws InterruptedException {
+    @Test (priority = 8)
+    public void ErrorSummaryRegionAppears() {
         homePage.ClickHomeButton();
-        homePage.clickLearningMaterial();
-        loginPage.enterLoginEmail("kb@gmail.com");
-        loginPage.enterPasswordId("D3vt3sting#");
-        loginPage.clickLogin();
-        homePage.SelectWebAutomationButton();
-        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
-        webAutomationAdvancePage.selectDeviceType("Tablet");
-        webAutomationAdvancePage.selectTabletBrand("Apple");
-        webAutomationAdvancePage.SelectDeviceStorage();
-        webAutomationAdvancePage.SelectDeviceQuantity();
-        webAutomationAdvancePage.EnterAddress("test");
-        Thread.sleep(2000);
-        webAutomationAdvancePage.SelectNextButton();
-        //
-        //webAutomationAdvancePage.SelectNextButton();
-        //homePage.clickLogoutButton();
-
-
-        String actualMsg = webAutomationAdvancePage.getQuantityValidationMessage();
-        Assert.assertEquals(actualMsg.trim(), "QUANTITY MUST BE ≥ 1", "Validation message mismatch!");
-
-
-    }
-
-
-    /*public void WizardStep1FieldsMissing() {
-        homePage.verifyHomePageIsDisplayed();
-        homePage.clickLearningMaterial();
-        loginPage.enterLoginEmail("kb@gmail.com");
-        loginPage.enterPasswordId("D3vt3sting#");
-        loginPage.clickLogin();
-        homePage.SelectWebAutomationButton();
-        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
-        webAutomationAdvancePage.selectDeviceType("Tablet");
-        webAutomationAdvancePage.selectTabletBrand("Apple");
-        webAutomationAdvancePage.SelectDeviceStorage();
-        webAutomationAdvancePage.SelectDeviceQuantity();
-        webAutomationAdvancePage.EnterAddress("");
-        webAutomationAdvancePage.SelectNextButton();
-        homePage.clickLogoutButton();
-    }*/
-
-    public void BlankAddressField() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
@@ -239,22 +199,47 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.SelectDeviceStorage();
         webAutomationAdvancePage.SelectDeviceColour("White");
         webAutomationAdvancePage.SelectDeviceQuantity();
-        webAutomationAdvancePage.EnterAddress("12345@gmail.com");
+        webAutomationAdvancePage.EnterAddress("test");
         webAutomationAdvancePage.SelectNextButton();
-        homePage.clickLogoutButton();
+        //homePage.clickLogoutButton();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement quantityError = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("//*[@id=\"inventory-form-grid\"]/div[6]/div/span")));
+        Assert.assertTrue(quantityError.getText().contains("QUANTITY MUST BE ≥ 1"),
+                "❌ Quantity validation message is missing or incorrect!");
+
+        WebElement summaryError = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("//*[@id=\"inventory-errors\"]/span")));
+        Assert.assertTrue(summaryError.isDisplayed(),
+                "❌ General 'Please correct highlighted fields' message not displayed!");
+
+        System.out.println("✅ Both validation error messages displayed correctly!");
     }
 
-
-
-
-    //Negative Test quantity 11
-    public void QuantityLessThanTen(){
-
-    }
+    @Test (priority = 9)
     //All Fields completed
     public void SuccessfulWizard1(){
+        homePage.ClickHomeButton();
+        homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Tablet");
+        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.SelectDeviceStorage();
+        webAutomationAdvancePage.SelectDeviceColour("White");
+        webAutomationAdvancePage.SelectDeviceQuantity();
+        webAutomationAdvancePage.EnterAddress("test");
+        webAutomationAdvancePage.SelectNextButton();
+       // homePage.clickLogoutButton();
+}
 
-    }
+    public void PricingPanelNoDevice(){
+}
 
 
 
