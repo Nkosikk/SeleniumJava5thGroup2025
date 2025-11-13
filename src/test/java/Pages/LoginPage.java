@@ -25,7 +25,7 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    public void enterLoginEmail(String email) {
+    public void enterLoginEmail(String email) { //enterLoginEmail(readFromFile.username);
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(loginEmail_id));
         loginEmail_id.sendKeys(email);
     }
