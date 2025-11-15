@@ -9,7 +9,8 @@ import java.time.Duration;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
-public class LearningMaterialPage {
+public class
+LearningMaterialPage {
     WebDriver driver;
     @FindBy(id = "practice-heading")
     WebElement welcomeHeading_id;
