@@ -25,7 +25,7 @@ public class HomePage {
     @FindBy(id = "tab-btn-web")
     WebElement SelectWebAutomation_id;
 
-    @FindBy(id = "logout-button")
+    @FindBy(xpath = "//*[@id=\"logout-button\"]")
     WebElement logout_id;
 
     @FindBy(id = "nav-btn-overview")
@@ -52,7 +52,6 @@ public class HomePage {
     }
 
     public void clickLogoutButton(){
-        new WebDriverWait(driver, Duration.ofSeconds(20)).until(visibilityOf(logout_id));
         logout_id.click();
     }
 

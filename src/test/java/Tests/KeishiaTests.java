@@ -1,5 +1,7 @@
 package Tests;
 
+import Pages.HomePage;
+import Pages.LearningMaterialPage;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -17,7 +19,7 @@ import java.time.Duration;
 @Test
 public class KeishiaTests extends Base {
 
-@Test
+    @Test
     public void ValidLogin() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
@@ -29,7 +31,7 @@ public class KeishiaTests extends Base {
         homePage.clickLogoutButton();
     }
 
-@Test (priority = 1)
+    @Test(priority = 1)
     public void InValidLogin() {
 
         //homePage.verifyHomePageIsDisplayed();
@@ -53,7 +55,8 @@ public class KeishiaTests extends Base {
             Assert.fail("Expected alert did not appear!");
         }
     }
-@Test(priority = 2)
+
+    @Test(priority = 2)
     public void ExtraSpaces() {
         //homePage.verifyHomePageIsDisplayed();
 
@@ -61,21 +64,32 @@ public class KeishiaTests extends Base {
         loginPage.enterLoginEmail("kb@gmail.com ");
         loginPage.enterPasswordId(" D3vt3sting# ");
         loginPage.clickLogin();
+
+
+    }
+
+    @Test(priority = 3)
+    public void SwitchTab() {
+        learningMaterialPage.clickAboutUsPage();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com ");
+        loginPage.enterPasswordId(" D3vt3sting# ");
+        loginPage.clickLogin();
         homePage.clickLogoutButton();
 
     }
-    @Test(priority = 3)
-    public void SelectLogout(){
-        //homePage.verifyHomePageIsDisplayed();
-        homePage.clickLearningMaterial();
+
+    @Test(priority = 4)
+    public void SelectLogout() {
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
         loginPage.clickLogin();
         homePage.clickLogoutButton();
 
     }
-    @Test (priority = 4)
-   public void RegistrationPasswordMismatch() {
+
+    @Test(priority = 5)
+    public void RegistrationPasswordMismatch() {
         //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
@@ -100,7 +114,8 @@ public class KeishiaTests extends Base {
         }
 
     }
-    @Test (priority = 5)
+
+    @Test(priority = 6)
     public void BadEmailFormat() {
         homePage.ClickHomeButton();
         homePage.clickLearningMaterial();
@@ -125,9 +140,9 @@ public class KeishiaTests extends Base {
             Assert.fail("Expected alert did not appear!");
         }
 
-
     }
-    @Test (priority = 6)
+
+    @Test(priority = 7)
     public void VerifyPasswordLength() {
         //homePage.verifyHomePageIsDisplayed();
         homePage.ClickHomeButton();
@@ -155,7 +170,8 @@ public class KeishiaTests extends Base {
         }
 
     }
-    @Test (priority = 7)
+
+    @Test(priority = 8)
     public void SuccessfullyRegistration() {
         homePage.ClickHomeButton();
         //homePage.verifyHomePageIsDisplayed();
@@ -184,7 +200,7 @@ public class KeishiaTests extends Base {
 
     }
 
-    @Test (priority = 8)
+    @Test(priority = 9)
     public void ErrorSummaryRegionAppears() {
         homePage.ClickHomeButton();
         homePage.verifyHomePageIsDisplayed();
@@ -217,8 +233,7 @@ public class KeishiaTests extends Base {
         System.out.println("✅ Both validation error messages displayed correctly!");
     }
 
-    @Test (priority = 9)
-    //All Fields completed
+    @Test(priority = 10)
     public void SuccessfulWizard1() throws InterruptedException {
         homePage.ClickHomeButton();
         homePage.verifyHomePageIsDisplayed();
@@ -235,11 +250,11 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.SelectDeviceQuantity();
         webAutomationAdvancePage.EnterAddress("test");
         webAutomationAdvancePage.SelectNextButton();
-        Thread.sleep(2000);
-       // homePage.clickLogoutButton();
-}
+        homePage.clickLogoutButton();
+    }
 
-    public void PricingPanelNoDevice(){
+    @Test(priority = 11)
+    public void PricingPanelNoDevice() {
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
@@ -249,30 +264,34 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.EnterAddress("test");
         webAutomationAdvancePage.SelectNextButton();
 
+        String unitPrice = webAutomationAdvancePage.getUnitPrice();
+        String subtotal = webAutomationAdvancePage.getSubtotal();
+        String quantity = webAutomationAdvancePage.getQuantityText();
 
-
-
-
-}
-
-    public void PricingPanelPhone64GBTQty1(){
-
-
-    }
-    public void PricingPanelPhone128GBQty2(){
-
-
+        Assert.assertEquals(unitPrice, "—", "Unit Price should show a dash when nothing is selected");
+        Assert.assertEquals(subtotal, "Subtotal: —", "Subtotal should show a dash when nothing is selected");
+        Assert.assertEquals(quantity, "Qty: 1", "Quantity should default to 1 when nothing is selected");
     }
 
-    public void PricingPanelLaptop256GBQty1(){
 
 
-    }
-    public void ClearDevicePricingResets(){
+    //public void PricingPanelPhone64GBTQty1(){
 
 
-    }
+    //}
+    //public void PricingPanelPhone128GBQty2(){
 
+
+    //}
+
+    //public void PricingPanelLaptop256GBQty1(){
+
+
+    //}
+    //public void ClearDevicePricingResets(){
+
+
+    // }
 
 
     @AfterTest
@@ -280,6 +299,12 @@ public class KeishiaTests extends Base {
         driver.quit();
     }
 }
+
+
+    //}
+//}
+
+
 
 
 

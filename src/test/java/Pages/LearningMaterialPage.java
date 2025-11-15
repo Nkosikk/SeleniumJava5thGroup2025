@@ -15,18 +15,26 @@ public class LearningMaterialPage {
     WebElement welcomeHeading_id;
     @FindBy(id = "tab-btn-web")
     WebElement WebAutomationAdvanceTab_id;
+    @FindBy(id = "nav-btn-about")
+    WebElement AboutUsPage_id;
+
 
     public LearningMaterialPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void verifyHeading(){
+    public void verifyHeading() {
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(welcomeHeading_id));
-        welcomeHeading_id.isDisplayed();}
+        welcomeHeading_id.isDisplayed();
+    }
 
-    public void clickWebAutomationAdvanceTab(){
+    public void clickWebAutomationAdvanceTab() {
 
         WebAutomationAdvanceTab_id.click();
+    }
+
+    public void clickAboutUsPage() {
+        AboutUsPage_id.click();
     }
 
 

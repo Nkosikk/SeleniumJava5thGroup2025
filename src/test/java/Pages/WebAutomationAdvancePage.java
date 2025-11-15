@@ -44,8 +44,14 @@ public class WebAutomationAdvancePage {
     @FindBy (id = "inventory-next-btn")
     WebElement SelectNextButton_id;
 
+    @FindBy(id = "unit-price-value")
+    WebElement UnitPrice_id;
 
+    @FindBy(id = "quantity-label")
+    WebElement Quantity_id;
 
+    @FindBy (id = "subtotal-label")
+    WebElement SubTotal_id;
 
 
     public WebAutomationAdvancePage(WebDriver driver){
@@ -89,6 +95,27 @@ public class WebAutomationAdvancePage {
 
         SelectNextButton_id.click();
     }
+
+    public String getUnitPrice() {
+        return UnitPrice_id.getText().trim();
+    }
+
+
+    public String getQuantityText() {
+        return Quantity_id.getText().trim();
+    }
+
+
+    public String getQuantityInputValue() {
+        return SelectQuantity_id.getAttribute("value").trim();
+    }
+
+
+    public String getSubtotal() {
+        return SubTotal_id.getText().trim();
+    }
+
+
 
 
 
