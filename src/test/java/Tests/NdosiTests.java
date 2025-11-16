@@ -43,7 +43,10 @@ public class NdosiTests extends Base{
       Thread.sleep(2000);
     }
 
-
+    @Test(dependsOnMethods  = "clickWebAutomationAdvanceTab")
+           public void selecteviceType(){
+          webAutomationAdvancePage.selectDeviceType();
+    }
 
     @AfterTest
     public void closeBrowser(){
