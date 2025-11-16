@@ -25,7 +25,7 @@ public class HomePage {
     @FindBy(id = "tab-btn-web")
     WebElement SelectWebAutomation_id;
 
-    @FindBy(xpath = "//*[@id=\"logout-button\"]")
+    @FindBy(id = "logout-button")
     WebElement logout_id;
 
     @FindBy(id = "nav-btn-overview")
@@ -51,14 +51,24 @@ public class HomePage {
 
     }
 
-    public void clickLogoutButton(){
-        logout_id.click();
-    }
+    public void clickLogoutButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait.until(ExpectedConditions.visibilityOf(logout_id));
+
+    // Scroll into view just in case
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",  logout_id);
+
+    // Force click with JavaScript (bypasses nav-bar overlap)
+    ((JavascriptExecutor) driver).executeScript("arguments[0].click();",  logout_id);
+}
+
+
+
+
+
 
     public void ClickHomeButton(){
         SelectHomeButton_id.click();
     }
-
-
 
 }

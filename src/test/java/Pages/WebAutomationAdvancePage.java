@@ -92,6 +92,7 @@ public class WebAutomationAdvancePage {
     }
 
     public void SelectNextButton(){
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(SelectNextButton_id));
 
         SelectNextButton_id.click();
     }
@@ -107,7 +108,7 @@ public class WebAutomationAdvancePage {
 
 
     public String getQuantityInputValue() {
-        return SelectQuantity_id.getAttribute("value").trim();
+        return SelectQuantity_id.getAttribute("0").trim();
     }
 
 

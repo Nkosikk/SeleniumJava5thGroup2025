@@ -59,8 +59,7 @@ public class KeishiaTests extends Base {
     @Test(priority = 2)
     public void ExtraSpaces() {
         //homePage.verifyHomePageIsDisplayed();
-
-        homePage.clickLearningMaterial();
+        //homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com ");
         loginPage.enterPasswordId(" D3vt3sting# ");
         loginPage.clickLogin();
@@ -249,19 +248,28 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.SelectDeviceColour("White");
         webAutomationAdvancePage.SelectDeviceQuantity();
         webAutomationAdvancePage.EnterAddress("test");
+
         webAutomationAdvancePage.SelectNextButton();
         homePage.clickLogoutButton();
     }
 
     @Test(priority = 11)
     public void PricingPanelNoDevice() {
-        homePage.verifyHomePageIsDisplayed();
+        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
         loginPage.clickLogin();
         homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        //webAutomationAdvancePage.selectDeviceType("");
+        //webAutomationAdvancePage.selectTabletBrand("");
+        //webAutomationAdvancePage.SelectDeviceStorage();
+        //webAutomationAdvancePage.SelectDeviceColour("");
+        //webAutomationAdvancePage.SelectDeviceQuantity();
         webAutomationAdvancePage.EnterAddress("test");
+
         webAutomationAdvancePage.SelectNextButton();
 
         String unitPrice = webAutomationAdvancePage.getUnitPrice();
