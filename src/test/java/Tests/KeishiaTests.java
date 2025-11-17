@@ -233,7 +233,7 @@ public class KeishiaTests extends Base {
     }
 
     @Test(priority = 10)
-    public void SuccessfulWizard1() throws InterruptedException {
+    public void SuccessfulWizard1() {
         homePage.ClickHomeButton();
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
@@ -255,6 +255,7 @@ public class KeishiaTests extends Base {
 
     @Test(priority = 11)
     public void PricingPanelNoDevice() {
+        homePage.ClickHomeButton();
         //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
@@ -263,11 +264,11 @@ public class KeishiaTests extends Base {
         homePage.SelectWebAutomationButton();
 
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
-        //webAutomationAdvancePage.selectDeviceType("");
-        //webAutomationAdvancePage.selectTabletBrand("");
+        //webAutomationAdvancePage.selectDeviceType();
+        //webAutomationAdvancePage.selectTabletBrand();
         //webAutomationAdvancePage.SelectDeviceStorage();
         //webAutomationAdvancePage.SelectDeviceColour("");
-        //webAutomationAdvancePage.SelectDeviceQuantity();
+        //webAutomationAdvancePage.SelectDeviceQuantity("0");
         webAutomationAdvancePage.EnterAddress("test");
 
         webAutomationAdvancePage.SelectNextButton();

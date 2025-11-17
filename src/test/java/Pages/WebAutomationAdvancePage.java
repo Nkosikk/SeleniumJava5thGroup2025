@@ -19,7 +19,6 @@ public class WebAutomationAdvancePage {
     @FindBy(id = "inventory-title")
     WebElement inventoryHeader_id;
 
-
     @FindBy(id = "deviceType")
     WebElement deviceTypeDropDown_id;
 
@@ -60,7 +59,6 @@ public class WebAutomationAdvancePage {
 
     public void verifyInventoryHeaderIsDisplayed(){
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(inventoryHeader_id));
-
         inventoryHeader_id.isDisplayed();
     }
     public void selectDeviceType(String deviceType){
@@ -68,6 +66,7 @@ public class WebAutomationAdvancePage {
     }
 
     public void selectTabletBrand(String deviceBrand){
+
         tabletBrand_id.sendKeys(deviceBrand);
     }
 
@@ -76,7 +75,6 @@ public class WebAutomationAdvancePage {
     }
 
     public void SelectDeviceQuantity() {
-
         SelectQuantity_id.clear();
         SelectQuantity_id.sendKeys("0");
     }
@@ -87,7 +85,6 @@ public class WebAutomationAdvancePage {
 
     public void SelectDeviceColour(String colour){
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(SelectDeviceColour_id));
-
         SelectDeviceColour_id.sendKeys (colour);
     }
 
@@ -98,21 +95,25 @@ public class WebAutomationAdvancePage {
     }
 
     public String getUnitPrice() {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(UnitPrice_id));
         return UnitPrice_id.getText().trim();
     }
 
 
     public String getQuantityText() {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(Quantity_id));
         return Quantity_id.getText().trim();
     }
 
 
     public String getQuantityInputValue() {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(SelectQuantity_id));
         return SelectQuantity_id.getAttribute("0").trim();
     }
 
 
     public String getSubtotal() {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(SubTotal_id));
         return SubTotal_id.getText().trim();
     }
 
