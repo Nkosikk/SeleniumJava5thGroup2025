@@ -18,7 +18,10 @@ public class WebAutomationAdvance {
   @FindBy(id = "deviceType")
   WebElement deviceDropDown_id;
 
-  public WebAutomationAdvance(){
+    @FindBy(id = "brand")
+    WebElement brandType_id;
+
+    public WebAutomationAdvance() {
       this.driver=driver;
   }
 
@@ -26,10 +29,13 @@ public class WebAutomationAdvance {
              new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(inventoryTitle_id));
     }
 
-     public void selectDeviceType (){
+    public void selectBrandType() {
          deviceDropDown_id.sendKeys("Tablet");
 
      }
 
+    public void selectTableBrand() {
 
+
+    }
 }

@@ -44,9 +44,15 @@ public class NdosiTests extends Base{
     }
 
     @Test(dependsOnMethods  = "clickWebAutomationAdvanceTab")
-           public void selecteviceType(){
+           public void selectDeviceType(){
           webAutomationAdvancePage.selectDeviceType();
     }
+
+    @Test (dependsOnMethods = "selectDeviceType" )
+             public void selectBrandType(){
+
+    }
+
 
     @AfterTest
     public void closeBrowser(){
