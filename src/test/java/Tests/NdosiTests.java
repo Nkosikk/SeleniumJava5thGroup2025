@@ -43,6 +43,13 @@ public class NdosiTests extends Base{
       Thread.sleep(2000);
     }
 
+    @Test(dependsOnMethods = "clickWebAutomationAdvancetab")
+    public void verifyWebAutomationAdvancedPageIsDisplayed() {
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+    }
+
+
+
     @Test(dependsOnMethods  = "clickWebAutomationAdvanceTab")
            public void selectDeviceType(){
           webAutomationAdvancePage.selectDeviceType();

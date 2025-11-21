@@ -29,8 +29,13 @@ public class WebAutomationAdvance {
              new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(inventoryTitle_id));
     }
 
+    public void selectDeviceType() {
+        deviceDropDown_id.sendKeys("Tablet");
+
+    }
+
     public void selectBrandType() {
-         deviceDropDown_id.sendKeys("Tablet");
+         deviceDropDown_id.sendKeys("Table");
 
      }
 
