@@ -17,12 +17,12 @@ public class NdosiTests extends Base{
 
     @Test(dependsOnMethods = "clickLearningMaterialTests")
     public void enterLoginEmail(){
-        loginPage.enterLoginEmail("nkosi@gmail.com");
+        loginPage.enterLoginEmail("ap.mshumpela@yahoo.com");
     }
 
     @Test(dependsOnMethods = "enterLoginEmail")
     public void enterPasswordTests() {
-        loginPage.enterPasswordId("12345678");
+        loginPage.enterPasswordId("Bolo1234");
     }
 
     @Test(dependsOnMethods = "enterPasswordTests")
