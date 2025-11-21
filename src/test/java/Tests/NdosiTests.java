@@ -50,17 +50,17 @@ public class NdosiTests extends Base{
 
 
 
-    @Test(dependsOnMethods  = "clickWebAutomationAdvanceTab")
-           public void selectDeviceType(){
-          webAutomationAdvancePage.selectDeviceType();
+    @Test(dependsOnMethods = "verifyWebAutomationAdvancePageIsDisplayedTest")
+    public void selectDeviceTypeTest() throws InterruptedException {
+        webAutomationAdvancePage.selectDeviceType("Tablet");
+        Thread.sleep(4000);
     }
 
-    @Test (dependsOnMethods = "selectDeviceType" )
-             public void selectBrandType(){
-
+    @Test(dependsOnMethods = "selectDeviceTypeTest")
+    public void selectDeviceBrandTest() throws InterruptedException {
+        webAutomationAdvancePage.selectTabletBrand("Samsung");
+        Thread.sleep(4000);
     }
-
-
     @AfterTest
     public void closeBrowser(){
         driver.quit();
