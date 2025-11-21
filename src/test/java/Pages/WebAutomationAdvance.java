@@ -34,10 +34,13 @@ public class WebAutomationAdvance {
 
     }
 
-    public void selectBrandType() {
-         deviceDropDown_id.sendKeys("Table");
 
-     }
+    public void selectTabletBrand(String deviceBrand) {
+        //.sendKeys(deviceBrand);
+        brandType_id.sendKeys(deviceBrand);
+    }
+
+
 
     public void selectTableBrand() {
 
