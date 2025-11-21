@@ -61,6 +61,41 @@ public class NdosiTests extends Base{
         webAutomationAdvancePage.selectTabletBrand("Samsung");
         Thread.sleep(4000);
     }
+
+    @Test(dependsOnMethods = "selectDeviceBrandTest")
+    public void selectStorageOptionTest(){
+        webAutomationAdvancePage.selectStorageOption();
+
+    }
+    @Test(dependsOnMethods = "selectStorageOptionTest")
+    public void selectColorOptionTest(){
+        webAutomationAdvancePage.selectColorOption();
+    }
+
+    @Test(dependsOnMethods = "SelectColorOtionTest")
+    public void enterQuantityTest(){
+        webAutomationAdvancePage.enterQuantity("2");
+    }
+
+    @Test(dependsOnMethods = "enterQuantityTest")
+    public void enterAddressTest(){
+        webAutomationAdvancePage.enterAddress("no 27 main miami");
+    }
+
+    @Test(dependsOnMethods = "enterAdressTest")
+   public void clickNextButtonTest(){
+        webAutomationAdvancePage.clickNextButton();
+    }
+     @Test(dependsOnMethods = "clickNextButtonTest")
+     public void verifyOrderSuccessToastIsDisplayedTest(){
+        webAutomationAdvancePage.verifyOrderSuccessToastIsDisplayed();
+     }
+
+
+
+
+
+
     @AfterTest
     public void closeBrowser(){
         driver.quit();
