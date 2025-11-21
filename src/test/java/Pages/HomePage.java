@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,15 +31,20 @@ HomePage {
         homepageTitle_id.isDisplayed();
     }
 
-    public void clickLearningMaterial(){
-        LearningMaterial_id.click();
+    public void clickLearningMaterial() {
+
+
+            new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(LearningMaterial_id));
+
+            new WebDriverWait(driver, Duration.ofSeconds(10)).until(
+                    driver -> driver.findElement(By.id("login-email")).isDisplayed()
+            );
+        }
+
 
     }
 
 
 
 
-
-
-}
 
