@@ -4,9 +4,9 @@
 <!--    <listeners>-->
 <!--        <listener class-name="ExtentReports.Listener"></listener>-->
 <!--    </listeners>-->
-    <test name="Ndosi Tests">
+    <test name="Mali Tests">
         <classes>
-            <class name="Tests.NdosiTests"></class>
+            <class name="Tests.MaliTests"></class>
         </classes>
     </test>
 

@@ -4,7 +4,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 @Test
-public class NdosiTests extends Base{
+public class MaliTests extends Base{
     @Test(dependsOnMethods = "enterLoginEmail")
     public void enterPasswordTests() {
         loginPage.enterPasswordId("Vivere02*&*");
