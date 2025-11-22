@@ -14,6 +14,7 @@ public class
 
 HomePage {
 
+
     WebDriver driver;
 
     @FindBy(id = "overview-hero")
@@ -31,18 +32,13 @@ HomePage {
         homepageTitle_id.isDisplayed();
     }
 
-    public void clickLearningMaterial() {
-
-
-            new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(LearningMaterial_id));
-
-            new WebDriverWait(driver, Duration.ofSeconds(10)).until(
-                    driver -> driver.findElement(By.id("login-email")).isDisplayed()
-            );
-        }
-
+    public void clickLearningMaterial(){
+        LearningMaterial_id.click();
 
     }
+
+}
+
 
 
 
