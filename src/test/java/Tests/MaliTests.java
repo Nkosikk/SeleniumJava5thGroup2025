@@ -5,6 +5,21 @@ import org.testng.annotations.Test;
 
 @Test
 public class MaliTests extends Base{
+    @Test
+    public void verifyHomePageIsDisplayed() {
+        homePage.verifyHomePageIsDisplayed();
+    }
+
+    @Test(dependsOnMethods = "verifyHomePageIsDisplayed")
+    public void clickLearningMaterial() {
+        homePage.clickLearningMaterial();
+    }
+
+    @Test(dependsOnMethods = "clickLearningMaterial")
+    public void enterLoginEmail() {
+        loginPage.enterLoginEmail("nkosi@gmail.com");
+    }
+
     @Test(dependsOnMethods = "enterLoginEmail")
     public void enterPasswordTests() {
         loginPage.enterPasswordId("Vivere02*&*");
