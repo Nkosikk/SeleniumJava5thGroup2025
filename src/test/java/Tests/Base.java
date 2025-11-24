@@ -17,5 +17,6 @@ public class Base {
     WebAutomationAdvancePage webAutomationAdvancePage = PageFactory.initElements(driver, WebAutomationAdvancePage.class);
     TakeScreenshots takeScreenshots = new TakeScreenshots();
     RegistrationPage registrationPage =PageFactory.initElements(driver, RegistrationPage.class);
+    ReviewExtrasPage reviewExtrasPage =PageFactory.initElements(driver, ReviewExtrasPage.class);
 
 }

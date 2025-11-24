@@ -28,6 +28,9 @@ public class WebAutomationAdvancePage {
     @FindBy (id = "storage-64GB")
     WebElement SelectStorage_id;
 
+    @FindBy(id = "storage-128GB")
+    WebElement SelectStorage128_id;
+
     @FindBy (id = "white")
     WebElement SelectColour_id;
 
@@ -52,6 +55,11 @@ public class WebAutomationAdvancePage {
     @FindBy (id = "subtotal-label")
     WebElement SubTotal_id;
 
+    @FindBy(id = "storage-256GB")
+    WebElement LaptopStorage_id;
+
+
+
 
     public WebAutomationAdvancePage(WebDriver driver){
         this.driver=driver;
@@ -74,9 +82,9 @@ public class WebAutomationAdvancePage {
         SelectStorage_id.click();
     }
 
-    public void SelectDeviceQuantity() {
+    public void SelectDeviceQuantity(String quantity) {
         SelectQuantity_id.clear();
-        SelectQuantity_id.sendKeys("0");
+        SelectQuantity_id.sendKeys(quantity);
     }
 
     public void EnterAddress(String address){
@@ -95,7 +103,7 @@ public class WebAutomationAdvancePage {
     }
 
     public String getUnitPrice() {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(UnitPrice_id));
+        new WebDriverWait(driver, Duration.ofSeconds(20)).until(visibilityOf(UnitPrice_id));
         return UnitPrice_id.getText().trim();
     }
 
@@ -115,6 +123,14 @@ public class WebAutomationAdvancePage {
     public String getSubtotal() {
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(SubTotal_id));
         return SubTotal_id.getText().trim();
+    }
+
+    public void storage128GB(){
+        SelectStorage128_id.click();
+    }
+
+    public void laptopStorage(){
+        LaptopStorage_id.click();
     }
 
 

@@ -171,7 +171,7 @@ public class KeishiaTests extends Base {
     }
 
     @Test(priority = 8)
-    public void SuccessfullyRegistration() {
+    public void successfullyRegistration() {
         homePage.ClickHomeButton();
         //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
@@ -200,7 +200,7 @@ public class KeishiaTests extends Base {
     }
 
     @Test(priority = 9)
-    public void ErrorSummaryRegionAppears() {
+    public void errorSummaryRegionAppears() {
         homePage.ClickHomeButton();
         homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
@@ -213,7 +213,7 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.selectTabletBrand("Apple");
         webAutomationAdvancePage.SelectDeviceStorage();
         webAutomationAdvancePage.SelectDeviceColour("White");
-        webAutomationAdvancePage.SelectDeviceQuantity();
+        webAutomationAdvancePage.SelectDeviceQuantity("0");
         webAutomationAdvancePage.EnterAddress("test");
         webAutomationAdvancePage.SelectNextButton();
         //homePage.clickLogoutButton();
@@ -233,6 +233,59 @@ public class KeishiaTests extends Base {
     }
 
     @Test(priority = 10)
+    public void QuantityGreaterThan11() throws InterruptedException {
+        homePage.ClickHomeButton();
+        Thread.sleep(1000);
+        homePage.verifyHomePageIsDisplayed();
+        Thread.sleep(1000);
+        homePage.clickLearningMaterial();
+        Thread.sleep(1000);
+
+        loginPage.enterLoginEmail("kb@gmail.com");
+        Thread.sleep(1000);
+        loginPage.enterPasswordId("D3vt3sting#");
+        Thread.sleep(1000);
+        loginPage.clickLogin();
+        Thread.sleep(1000);
+
+        homePage.SelectWebAutomationButton();
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Tablet");
+        Thread.sleep(1000);
+        webAutomationAdvancePage.selectTabletBrand("Apple");
+        Thread.sleep(1000);
+        webAutomationAdvancePage.SelectDeviceStorage();
+        Thread.sleep(1000);
+        webAutomationAdvancePage.SelectDeviceColour("White");
+        Thread.sleep(1000);
+        webAutomationAdvancePage.SelectDeviceQuantity("12");
+        Thread.sleep(1000);
+        webAutomationAdvancePage.EnterAddress("test");
+        Thread.sleep(1000);
+        webAutomationAdvancePage.SelectNextButton();
+        Thread.sleep(1000);
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement quantityError = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("//*[@id=\"inventory-form-grid\"]/div[6]/div/span")));
+
+        // Print the actual message so we know what it is
+        String actualText = quantityError.getText().trim();
+        System.out.println("Actual validation message: [" + actualText + "]");
+
+        // Flexible assertion: allows minor differences in text
+        String lower = actualText.toLowerCase();
+        Assert.assertTrue(
+                lower.contains("10") &&
+                        (lower.contains("≤") || lower.contains("less") || lower.contains("max") || lower.contains("cannot")),
+                "❌ Quantity validation message is missing or incorrect!\nActual message: " + actualText
+        );
+
+        System.out.println("✅ Validation error message displayed correctly!");
+    }
+
+
+    @Test(priority = 11)
     public void SuccessfulWizard1() {
         homePage.ClickHomeButton();
         homePage.verifyHomePageIsDisplayed();
@@ -246,14 +299,14 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.selectTabletBrand("Apple");
         webAutomationAdvancePage.SelectDeviceStorage();
         webAutomationAdvancePage.SelectDeviceColour("White");
-        webAutomationAdvancePage.SelectDeviceQuantity();
+        webAutomationAdvancePage.SelectDeviceQuantity("1");
         webAutomationAdvancePage.EnterAddress("test");
 
         webAutomationAdvancePage.SelectNextButton();
         homePage.clickLogoutButton();
     }
 
-    @Test(priority = 11)
+    @Test(priority = 12)
     public void PricingPanelNoDevice() {
         homePage.ClickHomeButton();
         //homePage.verifyHomePageIsDisplayed();
@@ -282,25 +335,132 @@ public class KeishiaTests extends Base {
         Assert.assertEquals(quantity, "Qty: 1", "Quantity should default to 1 when nothing is selected");
     }
 
+    @Test(priority = 13)
+    public void PricingPanelPhone64GBTQty1() {
+        homePage.ClickHomeButton();
+        //homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Phone");
+        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.SelectDeviceStorage();
+        webAutomationAdvancePage.SelectDeviceColour("white");
+        webAutomationAdvancePage.SelectDeviceQuantity("1");
+        webAutomationAdvancePage.EnterAddress("test");
 
 
-    //public void PricingPanelPhone64GBTQty1(){
+        String unitPrice = webAutomationAdvancePage.getUnitPrice();
+        String subtotal = webAutomationAdvancePage.getSubtotal();
+        String quantity = webAutomationAdvancePage.getQuantityText();
+
+        Assert.assertEquals(unitPrice, "R400.00", "Unit Price should show R400.00 when 64GB selected");
+        Assert.assertEquals(quantity, "Qty: 1", "Quantity should default to 1 when nothing is selected");
+        Assert.assertEquals(subtotal, "Subtotal: R400.00", "Subtotal should show a dash when nothing is selected");
+
+        webAutomationAdvancePage.SelectNextButton();
+    }
+    @Test (priority = 14)
+    public void PricingPanelPhone128GBQty2(){
+
+        homePage.ClickHomeButton();
+        //homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Phone");
+        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.storage128GB();
+        webAutomationAdvancePage.SelectDeviceColour("white");
+        webAutomationAdvancePage.SelectDeviceQuantity("2");
+        webAutomationAdvancePage.EnterAddress("test");
 
 
-    //}
-    //public void PricingPanelPhone128GBQty2(){
+        String unitPrice = webAutomationAdvancePage.getUnitPrice();
+        String subtotal = webAutomationAdvancePage.getSubtotal();
+        String quantity = webAutomationAdvancePage.getQuantityText();
+
+        Assert.assertEquals(unitPrice, "R480.00", "Unit Price should show R480.00 when 64GB selected");
+        Assert.assertEquals(quantity, "Qty: 2", "Quantity should default to 1 when nothing is selected");
+        Assert.assertEquals(subtotal, "Subtotal: R960.00", "Subtotal should show a dash when nothing is selected");
+
+        webAutomationAdvancePage.SelectNextButton();
+
+    }
+    @Test(priority = 15)
+    public void PricingPanelLaptop256GBQty1() throws InterruptedException {
+
+        homePage.ClickHomeButton();
+        //homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Laptop");
+        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.laptopStorage();
+        webAutomationAdvancePage.SelectDeviceColour("white");
+        webAutomationAdvancePage.SelectDeviceQuantity("1");
+        webAutomationAdvancePage.EnterAddress("test");
 
 
-    //}
+        String unitPrice = webAutomationAdvancePage.getUnitPrice();
+        String subtotal = webAutomationAdvancePage.getSubtotal();
+        String quantity = webAutomationAdvancePage.getQuantityText();
 
-    //public void PricingPanelLaptop256GBQty1(){
+        Assert.assertEquals(unitPrice, "R1360.00", "Unit Price should show R1360.00 when 64GB selected");
+        Assert.assertEquals(quantity, "Qty: 1", "Quantity should default to 1 when nothing is selected");
+        Thread.sleep(3000);
+       // webAutomationAdvancePage.SelectNextButton();
+
+    }
+    @Test(priority = 16)
+    public void ClearDevicePricingResets(){
+        homePage.ClickHomeButton();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+        webAutomationAdvancePage.selectDeviceType("");
+
+        String unitPrice = webAutomationAdvancePage.getUnitPrice();
+        String subtotal = webAutomationAdvancePage.getSubtotal();
+        String quantity = webAutomationAdvancePage.getQuantityText();
+
+        Assert.assertEquals(unitPrice, "—", "Unit Price should show a dash when nothing is selected");
+    }
+    @Test
+    public void Step2ExtrasAndPricing(){
+        homePage.ClickHomeButton();
+        //homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Laptop");
+        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.laptopStorage();
+        webAutomationAdvancePage.SelectDeviceColour("white");
+        webAutomationAdvancePage.SelectDeviceQuantity("1");
+        webAutomationAdvancePage.EnterAddress("test");
+    }
 
 
-    //}
-    //public void ClearDevicePricingResets(){
-
-
-    // }
 
 
     @AfterTest
@@ -310,8 +470,7 @@ public class KeishiaTests extends Base {
 }
 
 
-    //}
-//}
+
 
 
 
