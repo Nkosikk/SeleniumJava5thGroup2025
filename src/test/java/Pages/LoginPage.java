@@ -38,6 +38,10 @@ public class LoginPage {
     public void clickLogin() {
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(loginSubmit_id));
         loginSubmit_id.click();
+
+        // Wait for navigation to complete
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(driver -> driver.getCurrentUrl().contains("practice"));
     }
 
 }

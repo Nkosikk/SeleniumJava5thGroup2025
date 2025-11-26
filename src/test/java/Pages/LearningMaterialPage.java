@@ -25,8 +25,7 @@ public class LearningMaterialPage {
         welcomeHeading_id.isDisplayed();}
 
     public void clickWebAutomationAdvanceTab(){
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(WebAutomationAdvanceTab_id));
         WebAutomationAdvanceTab_id.click();
-
-
     }
 }

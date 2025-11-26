@@ -40,6 +40,8 @@ public class WebAutomationAdvance {
   @FindBy(id = "inventory-next-btn")
   WebElement nextButton_id;
 
+  @FindBy(id = "add-to-cart-btn")
+  WebElement addToCartButton_id;
 
   @FindBy(id = "purchase-success-toast")
   WebElement OrderSuccessToast_id;
@@ -100,7 +102,12 @@ public class WebAutomationAdvance {
 
 
   public void clickNextButton() {
-      nextButton_id.click();
+    new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(unitPriceLabel_id));
+    String stringUnitPrice = unitPriceLabel_id.getText();
+    System.out.println(stringUnitPrice);
+
+    new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(nextButton_id));
+    nextButton_id.click();
   }
 
   public void verifyOrderSuccessToastIsDisplayed(){
