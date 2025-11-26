@@ -25,9 +25,8 @@ public class LearningMaterialPage {
         welcomeHeading_id.isDisplayed();}
 
     public void clickWebAutomationAdvanceTab(){
-
         WebAutomationAdvanceTab_id.click();
+
+
     }
-
-
 }

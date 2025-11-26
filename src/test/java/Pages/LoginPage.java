@@ -31,11 +31,14 @@ public class LoginPage {
     }
 
     public void enterPasswordId(String password) {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(loginPassword_id));
         loginPassword_id.sendKeys(password);
     }
 
     public void clickLogin() {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(loginSubmit_id));
         loginSubmit_id.click();
     }
+
 }
 

@@ -56,7 +56,7 @@ public class WebAutomationAdvance {
   WebElement subtotalLabel_id;
 
 
-    public WebAutomationAdvance() {
+  public WebAutomationAdvance(WebDriver driver) {
       this.driver=driver;
   }
 
@@ -64,42 +64,42 @@ public class WebAutomationAdvance {
              new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(inventoryTitle_id));
     }
 
-    public void selectDeviceType(String device ) {
-        deviceDropDown_id.sendKeys("Tablet");
+  public void selectDeviceType(String device) {
+    new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(deviceDropDown_id));
+    deviceDropDown_id.sendKeys("Tablet");
+  }
 
-    }
 
-
-    public void selectTabletBrand(String deviceBrand) {
-        //.sendKeys(deviceBrand);
+  public void selectTabletBrand(String deviceBrand) {
+    new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(brandType_id));
         brandType_id.sendKeys(deviceBrand);
     }
 
 
   public void selectStorageOption() {
+
+    new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(storageOption_128GB_id));
+
     storageOption_128GB_id.click();
   }
 
   public void selectColorOption() {
+    new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(colorOption_black_id));
     colorOption_black_id.click();
     }
 
   public void enterQuantity(String quantity) {
-    //quantity.clear();
+    new WebDriverWait(driver,Duration.ofSeconds(10)).until(visibilityOf( quantity_id));
     quantity_id.sendKeys((quantity));
   }
 
   public void enterAddress(String address) {
+    new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(address_id));
     address_id.sendKeys(address);
   }
 
+
   public void clickNextButton() {
-
-
-
-
-
-
       nextButton_id.click();
   }
 

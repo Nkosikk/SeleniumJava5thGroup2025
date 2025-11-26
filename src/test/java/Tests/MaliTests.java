@@ -17,12 +17,12 @@ public class MaliTests extends Base{
 
     @Test(dependsOnMethods = "clickLearningMaterial")
     public void enterLoginEmail() {
-        loginPage.enterLoginEmail("nkosi@gmail.com");
+        loginPage.enterLoginEmail("ap.mshumpela@yahoo.com");
     }
 
     @Test(dependsOnMethods = "enterLoginEmail")
     public void enterPasswordTests() {
-        loginPage.enterPasswordId("Vivere02*&*");
+        loginPage.enterPasswordId("Bolo1234");
     }
 
     @Test(dependsOnMethods = "enterPasswordTests")
@@ -57,6 +57,34 @@ public class MaliTests extends Base{
         webAutomationAdvancePage.selectTabletBrand("Samsung");
         Thread.sleep(4000);
     }
+
+    @Test(dependsOnMethods = "selectDeviceBrandTest")
+    public void selectStorage() throws InterruptedException {
+        webAutomationAdvancePage.selectStorageOption();
+        Thread.sleep(4000);
+    }
+    @Test(dependsOnMethods = "selectStorage")
+    public void selectQuantity() throws InterruptedException {
+        webAutomationAdvancePage.selectTabletBrand("Samsung");
+        Thread.sleep(2000);
+    }
+
+    @Test(dependsOnMethods = "selectQuantity")
+    public void enterAdress() throws InterruptedException {
+        webAutomationAdvancePage.enterAddress("1234 Mali Street,Cape Town");
+        // Thread.sleep(2000);
+    }
+
+        @Test(dependsOnMethods = "enterAdress")
+                public void clickNextButton() throws InterruptedException{
+
+            webAutomationAdvancePage.clickNextButton();
+         Thread.sleep(2000);
+        }
+
+
+
+
     @AfterTest
     public void closeBrowser(){
         driver.quit();
