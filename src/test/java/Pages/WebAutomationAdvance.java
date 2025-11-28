@@ -102,16 +102,20 @@ public class WebAutomationAdvance {
 
 
   public void clickNextButton() {
-    new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(unitPriceLabel_id));
-    String stringUnitPrice = unitPriceLabel_id.getText();
-    System.out.println(stringUnitPrice);
 
-    new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(nextButton_id));
-    nextButton_id.click();
+    String stringUnitPrice = unitPriceLabel_id.getText();
+    System.out.println();
+      nextButton_id.click();
+
   }
 
   public void verifyOrderSuccessToastIsDisplayed(){
       new WebDriverWait((driver),Duration.ofSeconds(10)).until(visibilityOf(OrderSuccessToast_id));
   }
 
+
+  public void clickAddToCartButton(){
+        new WebDriverWait((driver), Duration.ofSeconds(10)).until(visibilityOf(addToCartButton_id));
+        addToCartButton_id.click();
+  }
 }

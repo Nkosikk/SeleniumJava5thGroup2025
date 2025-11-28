@@ -81,7 +81,10 @@ public class MaliTests extends Base{
             webAutomationAdvancePage.clickNextButton();
          Thread.sleep(2000);
         }
-
+           @Test(dependsOnMethods = " clickNextButton")
+           public void addToCart(){
+              webAutomationAdvancePage.clickAddToCartButton();
+           }
 
 
 

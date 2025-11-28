@@ -33,8 +33,12 @@ HomePage {
     }
 
     public void clickLearningMaterial(){
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(visibilityOf(LearningMaterial_id));
         LearningMaterial_id.click();
 
+        // Wait for navigation to complete
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(driver -> driver.getCurrentUrl().contains("login") || driver.getCurrentUrl().contains("practice"));
     }
 
 }
