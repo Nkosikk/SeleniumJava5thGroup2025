@@ -36,7 +36,6 @@ public class KeishiaTests extends Base {
     @Test(priority = 1)
     public void InValidLogin() {
 
-        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
 
         loginPage.enterLoginEmail("kb@gmail1.com");
@@ -60,8 +59,6 @@ public class KeishiaTests extends Base {
 
     @Test(priority = 2)
     public void ExtraSpaces() {
-        //homePage.verifyHomePageIsDisplayed();
-        //homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com ");
         loginPage.enterPasswordId(" D3vt3sting# ");
         loginPage.clickLogin();
@@ -91,7 +88,6 @@ public class KeishiaTests extends Base {
 
     @Test(priority = 5)
     public void RegistrationPasswordMismatch() {
-        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
         registrationPage.RegisterFirstName("Keishia");
@@ -145,7 +141,6 @@ public class KeishiaTests extends Base {
 
     @Test(priority = 7)
     public void VerifyPasswordLength() {
-        //homePage.verifyHomePageIsDisplayed();
         homePage.ClickHomeButton();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
@@ -175,7 +170,6 @@ public class KeishiaTests extends Base {
     @Test(priority = 8)
     public void successfullyRegistration() {
         homePage.ClickHomeButton();
-        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         registrationPage.SelectSignUp();
         registrationPage.RegisterFirstName("Keishia");
@@ -237,35 +231,23 @@ public class KeishiaTests extends Base {
     @Test(priority = 10)
     public void QuantityGreaterThan11() throws InterruptedException {
         homePage.ClickHomeButton();
-        Thread.sleep(1000);
         homePage.verifyHomePageIsDisplayed();
-        Thread.sleep(1000);
         homePage.clickLearningMaterial();
-        Thread.sleep(1000);
 
         loginPage.enterLoginEmail("kb@gmail.com");
-        Thread.sleep(1000);
         loginPage.enterPasswordId("D3vt3sting#");
-        Thread.sleep(1000);
         loginPage.clickLogin();
-        Thread.sleep(1000);
 
         homePage.SelectWebAutomationButton();
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
         webAutomationAdvancePage.selectDeviceType("Tablet");
-        Thread.sleep(1000);
         webAutomationAdvancePage.selectBrand("Apple");
-        Thread.sleep(1000);
         webAutomationAdvancePage.SelectDeviceStorage();
-        Thread.sleep(1000);
         webAutomationAdvancePage.SelectDeviceColour("White");
-        Thread.sleep(1000);
         webAutomationAdvancePage.SelectDeviceQuantity("12");
-        Thread.sleep(1000);
         webAutomationAdvancePage.EnterAddress("test");
-        Thread.sleep(1000);
         webAutomationAdvancePage.SelectNextButton();
-        Thread.sleep(1000);
+
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement quantityError = wait.until(ExpectedConditions
@@ -319,13 +301,7 @@ public class KeishiaTests extends Base {
         homePage.SelectWebAutomationButton();
 
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
-        //webAutomationAdvancePage.selectDeviceType();
-        //webAutomationAdvancePage.selectTabletBrand();
-        //webAutomationAdvancePage.SelectDeviceStorage();
-        //webAutomationAdvancePage.SelectDeviceColour("");
-        //webAutomationAdvancePage.SelectDeviceQuantity("0");
         webAutomationAdvancePage.EnterAddress("test");
-
         webAutomationAdvancePage.SelectNextButton();
 
         String unitPrice = webAutomationAdvancePage.getUnitPrice();
@@ -340,7 +316,6 @@ public class KeishiaTests extends Base {
     @Test(priority = 13)
     public void PricingPanelPhone64GBTQty1() {
         homePage.ClickHomeButton();
-        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
@@ -371,7 +346,6 @@ public class KeishiaTests extends Base {
     public void PricingPanelPhone128GBQty2() {
 
         homePage.ClickHomeButton();
-        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
@@ -403,7 +377,6 @@ public class KeishiaTests extends Base {
     public void PricingPanelLaptop256GBQty1() throws InterruptedException {
 
         homePage.ClickHomeButton();
-        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
@@ -426,7 +399,7 @@ public class KeishiaTests extends Base {
         Assert.assertEquals(unitPrice, "R1360.00", "Unit Price should show R1360.00 when 64GB selected");
         Assert.assertEquals(quantity, "Qty: 1", "Quantity should default to 1 when nothing is selected");
         Thread.sleep(3000);
-        // webAutomationAdvancePage.SelectNextButton();
+
 
     }
 
@@ -450,7 +423,6 @@ public class KeishiaTests extends Base {
     @Test(priority = 17)
     public void ShippingToggle() throws InterruptedException {
         homePage.ClickHomeButton();
-        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
@@ -466,7 +438,6 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.EnterAddress("test");
         webAutomationAdvancePage.SelectNextButton();
         reviewExtrasPage.ShippingOptionExpress();
-        Thread.sleep(1000);
         reviewExtrasPage.ValidateShippingCost();
 
         String shippingPrice = reviewExtrasPage.ValidateShippingCost();
@@ -480,7 +451,6 @@ public class KeishiaTests extends Base {
     @Test(priority = 18)
     public void VerifyWarrantyNoneIsSelected() throws InterruptedException {
         homePage.ClickHomeButton();
-        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
@@ -496,7 +466,6 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.EnterAddress("test");
         webAutomationAdvancePage.SelectNextButton();
         reviewExtrasPage.ShippingOptionExpress();
-        Thread.sleep(1000);
         reviewExtrasPage.ValidateShippingCost();
 
         String shippingPrice = reviewExtrasPage.ValidateShippingCost();
@@ -510,8 +479,6 @@ public class KeishiaTests extends Base {
     public void VerifyOneYearWarranty() throws InterruptedException {
 
         homePage.ClickHomeButton();
-
-        //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
         loginPage.enterPasswordId("D3vt3sting#");
@@ -526,20 +493,13 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.SelectDeviceQuantity("1");
         webAutomationAdvancePage.EnterAddress("test");
         webAutomationAdvancePage.SelectNextButton();
-        Thread.sleep(1000);
+
         reviewExtrasPage.ShippingOptionExpress();
-        Thread.sleep(1000);
-
         reviewExtrasPage.SelectOneYearWarranty();
-        Thread.sleep(1000);
-
-        //String shippingPrice = reviewExtrasPage.ValidateShippingCost();
-
         reviewExtrasPage.VerifyOneYearWarrantyAmount();
-        Thread.sleep(1000);
+
 
         String oneYearWarrantyAmount = reviewExtrasPage.VerifyOneYearWarrantyAmount();
-        Thread.sleep(1000);
 
         Assert.assertEquals(oneYearWarrantyAmount, "R49.00", "warranty amount should be R49.00");
     }
