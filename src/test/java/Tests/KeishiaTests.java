@@ -15,6 +15,8 @@ import org.testng.annotations.Test;
 import java.awt.*;
 import java.time.Duration;
 
+import static Utils.BrowserFactory.driver;
+
 
 @Test
 public class KeishiaTests extends Base {
@@ -210,7 +212,7 @@ public class KeishiaTests extends Base {
         homePage.SelectWebAutomationButton();
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
         webAutomationAdvancePage.selectDeviceType("Tablet");
-        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.selectBrand("Apple");
         webAutomationAdvancePage.SelectDeviceStorage();
         webAutomationAdvancePage.SelectDeviceColour("White");
         webAutomationAdvancePage.SelectDeviceQuantity("0");
@@ -252,7 +254,7 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
         webAutomationAdvancePage.selectDeviceType("Tablet");
         Thread.sleep(1000);
-        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.selectBrand("Apple");
         Thread.sleep(1000);
         webAutomationAdvancePage.SelectDeviceStorage();
         Thread.sleep(1000);
@@ -296,7 +298,7 @@ public class KeishiaTests extends Base {
         homePage.SelectWebAutomationButton();
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
         webAutomationAdvancePage.selectDeviceType("Tablet");
-        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.selectBrand("Apple");
         webAutomationAdvancePage.SelectDeviceStorage();
         webAutomationAdvancePage.SelectDeviceColour("White");
         webAutomationAdvancePage.SelectDeviceQuantity("1");
@@ -347,7 +349,7 @@ public class KeishiaTests extends Base {
 
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
         webAutomationAdvancePage.selectDeviceType("Phone");
-        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.selectBrand("Apple");
         webAutomationAdvancePage.SelectDeviceStorage();
         webAutomationAdvancePage.SelectDeviceColour("white");
         webAutomationAdvancePage.SelectDeviceQuantity("1");
@@ -364,8 +366,9 @@ public class KeishiaTests extends Base {
 
         webAutomationAdvancePage.SelectNextButton();
     }
-    @Test (priority = 14)
-    public void PricingPanelPhone128GBQty2(){
+
+    @Test(priority = 14)
+    public void PricingPanelPhone128GBQty2() {
 
         homePage.ClickHomeButton();
         //homePage.verifyHomePageIsDisplayed();
@@ -377,7 +380,7 @@ public class KeishiaTests extends Base {
 
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
         webAutomationAdvancePage.selectDeviceType("Phone");
-        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.selectBrand("Apple");
         webAutomationAdvancePage.storage128GB();
         webAutomationAdvancePage.SelectDeviceColour("white");
         webAutomationAdvancePage.SelectDeviceQuantity("2");
@@ -395,6 +398,7 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.SelectNextButton();
 
     }
+
     @Test(priority = 15)
     public void PricingPanelLaptop256GBQty1() throws InterruptedException {
 
@@ -408,7 +412,7 @@ public class KeishiaTests extends Base {
 
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
         webAutomationAdvancePage.selectDeviceType("Laptop");
-        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.selectBrand("Apple");
         webAutomationAdvancePage.laptopStorage();
         webAutomationAdvancePage.SelectDeviceColour("white");
         webAutomationAdvancePage.SelectDeviceQuantity("1");
@@ -422,11 +426,12 @@ public class KeishiaTests extends Base {
         Assert.assertEquals(unitPrice, "R1360.00", "Unit Price should show R1360.00 when 64GB selected");
         Assert.assertEquals(quantity, "Qty: 1", "Quantity should default to 1 when nothing is selected");
         Thread.sleep(3000);
-       // webAutomationAdvancePage.SelectNextButton();
+        // webAutomationAdvancePage.SelectNextButton();
 
     }
+
     @Test(priority = 16)
-    public void ClearDevicePricingResets(){
+    public void ClearDevicePricingResets() {
         homePage.ClickHomeButton();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
@@ -441,8 +446,9 @@ public class KeishiaTests extends Base {
 
         Assert.assertEquals(unitPrice, "—", "Unit Price should show a dash when nothing is selected");
     }
-    @Test
-    public void Step2ExtrasAndPricing(){
+
+    @Test(priority = 17)
+    public void ShippingToggle() throws InterruptedException {
         homePage.ClickHomeButton();
         //homePage.verifyHomePageIsDisplayed();
         homePage.clickLearningMaterial();
@@ -452,15 +458,150 @@ public class KeishiaTests extends Base {
         homePage.SelectWebAutomationButton();
 
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
-        webAutomationAdvancePage.selectDeviceType("Laptop");
-        webAutomationAdvancePage.selectTabletBrand("Apple");
+        webAutomationAdvancePage.selectDeviceType("Phone");
+        webAutomationAdvancePage.selectBrand("Apple");
         webAutomationAdvancePage.laptopStorage();
         webAutomationAdvancePage.SelectDeviceColour("white");
         webAutomationAdvancePage.SelectDeviceQuantity("1");
         webAutomationAdvancePage.EnterAddress("test");
+        webAutomationAdvancePage.SelectNextButton();
+        reviewExtrasPage.ShippingOptionExpress();
+        Thread.sleep(1000);
+        reviewExtrasPage.ValidateShippingCost();
+
+        String shippingPrice = reviewExtrasPage.ValidateShippingCost();
+
+        Assert.assertEquals(shippingPrice, "R25.00", "Shipping Price should show");
+
+        homePage.clickLogoutButton();
+
+    }
+
+    @Test(priority = 18)
+    public void VerifyWarrantyNoneIsSelected() throws InterruptedException {
+        homePage.ClickHomeButton();
+        //homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Phone");
+        webAutomationAdvancePage.selectBrand("Apple");
+        webAutomationAdvancePage.laptopStorage();
+        webAutomationAdvancePage.SelectDeviceColour("white");
+        webAutomationAdvancePage.SelectDeviceQuantity("1");
+        webAutomationAdvancePage.EnterAddress("test");
+        webAutomationAdvancePage.SelectNextButton();
+        reviewExtrasPage.ShippingOptionExpress();
+        Thread.sleep(1000);
+        reviewExtrasPage.ValidateShippingCost();
+
+        String shippingPrice = reviewExtrasPage.ValidateShippingCost();
+
+        reviewExtrasPage.SelectWarrantyNone();
+        String noneWarrantyAmount = reviewExtrasPage.ValidateNoneWarrantyAmount();
+        Assert.assertEquals(noneWarrantyAmount, "R0.00", "warranty amount should be R0.00");
+    }
+
+    @Test(priority = 19)
+    public void VerifyOneYearWarranty() throws InterruptedException {
+
+        homePage.ClickHomeButton();
+
+        //homePage.verifyHomePageIsDisplayed();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Phone");
+        webAutomationAdvancePage.selectBrand("Apple");
+        webAutomationAdvancePage.laptopStorage();
+        webAutomationAdvancePage.SelectDeviceColour("white");
+        webAutomationAdvancePage.SelectDeviceQuantity("1");
+        webAutomationAdvancePage.EnterAddress("test");
+        webAutomationAdvancePage.SelectNextButton();
+        Thread.sleep(1000);
+        reviewExtrasPage.ShippingOptionExpress();
+        Thread.sleep(1000);
+
+        reviewExtrasPage.SelectOneYearWarranty();
+        Thread.sleep(1000);
+
+        //String shippingPrice = reviewExtrasPage.ValidateShippingCost();
+
+        reviewExtrasPage.VerifyOneYearWarrantyAmount();
+        Thread.sleep(1000);
+
+        String oneYearWarrantyAmount = reviewExtrasPage.VerifyOneYearWarrantyAmount();
+        Thread.sleep(1000);
+
+        Assert.assertEquals(oneYearWarrantyAmount, "R49.00", "warranty amount should be R49.00");
     }
 
 
+    public void VerifyTwoYearWarranty() throws InterruptedException {
+
+        homePage.ClickHomeButton();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Phone");
+        webAutomationAdvancePage.selectBrand("Apple");
+        webAutomationAdvancePage.laptopStorage();
+        webAutomationAdvancePage.SelectDeviceColour("white");
+        webAutomationAdvancePage.SelectDeviceQuantity("1");
+        webAutomationAdvancePage.EnterAddress("test");
+        webAutomationAdvancePage.SelectNextButton();
+
+        reviewExtrasPage.ShippingOptionExpress();
+        reviewExtrasPage.SelectTwoYearWarranty();
+        reviewExtrasPage.VerifyTwoYearWarrantyAmount();
+        String twoYearWarrantyAmount = reviewExtrasPage.VerifyTwoYearWarrantyAmount();
+        Assert.assertEquals(twoYearWarrantyAmount, "R89.00", "warranty amount should be R89.00");
+        homePage.clickLogoutButton();
+    }
+
+    public void StepTwoFormulaCheck(){
+        homePage.ClickHomeButton();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Phone");
+        webAutomationAdvancePage.selectBrand("Apple");
+        webAutomationAdvancePage.SelectDeviceStorage("storage-128GB");
+        webAutomationAdvancePage.SelectDeviceColour("White");
+        webAutomationAdvancePage.getQuantityInputValue("2");
+        webAutomationAdvancePage.EnterAddress("test");
+        webAutomationAdvancePage.SelectNextButton();
+
+        reviewExtrasPage.ShippingOptionExpress();
+        reviewExtrasPage.SelectOneYearWarranty();
+        reviewExtrasPage.EnterDiscountCode("10");
+        reviewExtrasPage.SelectToApplyDiscountCode();
+
+        System.out.println("Subtotal = " + subtotal);
+        System.out.println("Expected Discount = " + expectedDiscount);
+        System.out.println("Expected Total = " + expectedTotal);
+
+
+
+
+
+    }
 
 
     @AfterTest
@@ -468,6 +609,8 @@ public class KeishiaTests extends Base {
         driver.quit();
     }
 }
+
+
 
 
 

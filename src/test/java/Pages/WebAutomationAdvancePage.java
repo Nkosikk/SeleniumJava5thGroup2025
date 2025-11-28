@@ -23,7 +23,7 @@ public class WebAutomationAdvancePage {
     WebElement deviceTypeDropDown_id;
 
     @FindBy(id = "brand")
-    WebElement tabletBrand_id;
+    WebElement Brand_id;
 
     @FindBy (id = "storage-64GB")
     WebElement SelectStorage_id;
@@ -73,9 +73,9 @@ public class WebAutomationAdvancePage {
         deviceTypeDropDown_id.sendKeys(deviceType);
     }
 
-    public void selectTabletBrand(String deviceBrand){
+    public void selectBrand(String deviceBrand){
 
-        tabletBrand_id.sendKeys(deviceBrand);
+       Brand_id.sendKeys(deviceBrand);
     }
 
     public void SelectDeviceStorage (){
