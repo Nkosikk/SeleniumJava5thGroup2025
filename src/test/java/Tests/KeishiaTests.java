@@ -504,7 +504,7 @@ public class KeishiaTests extends Base {
         Assert.assertEquals(oneYearWarrantyAmount, "R49.00", "warranty amount should be R49.00");
     }
 
-
+@Test(priority = 20)
     public void VerifyTwoYearWarranty() throws InterruptedException {
 
         homePage.ClickHomeButton();
@@ -530,8 +530,9 @@ public class KeishiaTests extends Base {
         Assert.assertEquals(twoYearWarrantyAmount, "R89.00", "warranty amount should be R89.00");
         homePage.clickLogoutButton();
     }
+    @Test(priority = 21)
+    public void StepTwoFormulaCheck() throws InterruptedException {
 
-    public void StepTwoFormulaCheck(){
         homePage.ClickHomeButton();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
@@ -542,28 +543,146 @@ public class KeishiaTests extends Base {
         webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
         webAutomationAdvancePage.selectDeviceType("Phone");
         webAutomationAdvancePage.selectBrand("Apple");
-        webAutomationAdvancePage.SelectDeviceStorage("storage-128GB");
+        webAutomationAdvancePage.storage128GB();
         webAutomationAdvancePage.SelectDeviceColour("White");
-        webAutomationAdvancePage.getQuantityInputValue("2");
+        webAutomationAdvancePage.SelectDeviceQuantity("2");
         webAutomationAdvancePage.EnterAddress("test");
         webAutomationAdvancePage.SelectNextButton();
 
         reviewExtrasPage.ShippingOptionExpress();
         reviewExtrasPage.SelectOneYearWarranty();
-        reviewExtrasPage.EnterDiscountCode("10");
+        reviewExtrasPage.EnterDiscountCode("SAVE10");
         reviewExtrasPage.SelectToApplyDiscountCode();
 
-        System.out.println("Subtotal = " + subtotal);
-        System.out.println("Expected Discount = " + expectedDiscount);
-        System.out.println("Expected Total = " + expectedTotal);
 
+        Assert.assertEquals(reviewExtrasPage.VerifySubTotal(), "R960.00");
+        Assert.assertEquals(reviewExtrasPage.VerifyDiscountValue(), "- R103.40");
+        Assert.assertEquals(reviewExtrasPage.VerifyTotalValue(), "R930.60");
+        homePage.clickLogoutButton();
 
+    }
 
+//Discount Codes (Single Item)
+    @Test(priority = 22)
+    public void DiscountCodeSave10(){
+        homePage.ClickHomeButton();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
 
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Phone");
+        webAutomationAdvancePage.selectBrand("Apple");
+        webAutomationAdvancePage.storage128GB();
+        webAutomationAdvancePage.SelectDeviceColour("White");
+        webAutomationAdvancePage.SelectDeviceQuantity("2");
+        webAutomationAdvancePage.EnterAddress("test");
+        webAutomationAdvancePage.SelectNextButton();
+
+        reviewExtrasPage.ShippingOptionExpress();
+        reviewExtrasPage.SelectOneYearWarranty();
+        reviewExtrasPage.EnterDiscountCode("SAVE10");
+        reviewExtrasPage.SelectToApplyDiscountCode();
+
+       String Save10Message = reviewExtrasPage.SelectToApplyDiscountCodeMessage();
+        Assert.assertEquals(Save10Message, "Code SAVE10 applied: -10%", "Message is displayed incorrect");
+        homePage.clickLogoutButton();
+
+    }
+
+@Test(priority = 23)
+    public void DiscountCodeSave20(){
+        homePage.ClickHomeButton();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Phone");
+        webAutomationAdvancePage.selectBrand("Apple");
+        webAutomationAdvancePage.storage128GB();
+        webAutomationAdvancePage.SelectDeviceColour("White");
+        webAutomationAdvancePage.SelectDeviceQuantity("2");
+        webAutomationAdvancePage.EnterAddress("test");
+        webAutomationAdvancePage.SelectNextButton();
+
+        reviewExtrasPage.ShippingOptionExpress();
+        reviewExtrasPage.SelectOneYearWarranty();
+        reviewExtrasPage.EnterDiscountCode("SAVE20");
+        reviewExtrasPage.SelectToApplyDiscountCode();
+
+        String Save10Message = reviewExtrasPage.SelectToApplyDiscountCodeMessage();
+        Assert.assertEquals(Save10Message, "Code SAVE20 applied: -20%", "Message is displayed incorrect");
+        homePage.clickLogoutButton();
+
+    }
+
+    @Test(priority = 23)
+    public void DiscountRandomInvalidCode(){
+        homePage.ClickHomeButton();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Phone");
+        webAutomationAdvancePage.selectBrand("Apple");
+        webAutomationAdvancePage.storage128GB();
+        webAutomationAdvancePage.SelectDeviceColour("White");
+        webAutomationAdvancePage.SelectDeviceQuantity("2");
+        webAutomationAdvancePage.EnterAddress("test");
+        webAutomationAdvancePage.SelectNextButton();
+
+        reviewExtrasPage.ShippingOptionExpress();
+        reviewExtrasPage.SelectOneYearWarranty();
+        reviewExtrasPage.EnterDiscountCode("RandomCode");
+        reviewExtrasPage.SelectToApplyDiscountCode();
+
+        String Save10Message = reviewExtrasPage.SelectToApplyDiscountCodeMessage();
+        Assert.assertEquals(Save10Message, "Invalid code", "Message is displayed incorrect");
+        homePage.clickLogoutButton();
+
+    }
+//Ended here
+    @Test(priority = 24)
+    public void NoDiscountApplied() {
+        homePage.ClickHomeButton();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Phone");
+        webAutomationAdvancePage.selectBrand("Apple");
+        webAutomationAdvancePage.storage128GB();
+        webAutomationAdvancePage.SelectDeviceColour("White");
+        webAutomationAdvancePage.SelectDeviceQuantity("2");
+        webAutomationAdvancePage.EnterAddress("test");
+        webAutomationAdvancePage.SelectNextButton();
+
+        reviewExtrasPage.ShippingOptionExpress();
+        reviewExtrasPage.SelectOneYearWarranty();
+        reviewExtrasPage.EnterDiscountCode("");
+        reviewExtrasPage.SelectToApplyDiscountCode();
+
+        String Save10Message = reviewExtrasPage.SelectToApplyDiscountCodeMessage();
+        Assert.assertEquals(Save10Message, "", "Message is displayed incorrect");
+        homePage.clickLogoutButton();
 
     }
 
 
+
+
+    
     @AfterTest
     public void closeBrowser() {
         driver.quit();
