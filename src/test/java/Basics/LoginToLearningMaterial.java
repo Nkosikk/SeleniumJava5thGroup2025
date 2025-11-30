@@ -37,12 +37,12 @@ public class LoginToLearningMaterial {
 
     @Test(priority = 3)
     public void enterEmail() {
-        driver.findElement(By.id("login-email")).sendKeys("nkosi@gmail.com");
+        driver.findElement(By.id("login-email")).sendKeys("xolani92@yahoo.com");
     }
 
     @Test(priority = 4)
     public void enterPassword() {
-        driver.findElement(By.id("login-password")).sendKeys("12345678");
+        driver.findElement(By.id("login-password")).sendKeys("home22073");
     }
 
     @Test(priority = 5)
