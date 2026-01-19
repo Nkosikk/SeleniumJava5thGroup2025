@@ -50,6 +50,9 @@ public class ReviewExtrasPage {
     @FindBy (id = "discount-feedback")
     WebElement discountMessage_id;
 
+    @FindBy (id = "add-to-cart-btn")
+    WebElement addToCartButton_id;
+
 
     public ReviewExtrasPage(WebDriver driver) {
         this.driver = driver;
@@ -130,5 +133,13 @@ public class ReviewExtrasPage {
         new WebDriverWait(driver, Duration.ofSeconds(20)).until(visibilityOf(totalValue_id));
         return driver.findElement(By.id("breakdown-total-value")).getText();
     }
+
+    public String VerifyAddCartButtonIsSelected (){
+        new WebDriverWait(driver,Duration.ofSeconds(20)).until(visibilityOf(addToCartButton_id));
+        addToCartButton_id.click();
+        return driver.findElement(By.id("add-to-cart-btn")).getText();
+    }
+
+
 }
 

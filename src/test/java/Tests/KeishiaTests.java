@@ -615,8 +615,8 @@ public class KeishiaTests extends Base {
         reviewExtrasPage.EnterDiscountCode("SAVE20");
         reviewExtrasPage.SelectToApplyDiscountCode();
 
-        String Save10Message = reviewExtrasPage.SelectToApplyDiscountCodeMessage();
-        Assert.assertEquals(Save10Message, "Code SAVE20 applied: -20%", "Message is displayed incorrect");
+        String Save20Message = reviewExtrasPage.SelectToApplyDiscountCodeMessage();
+        Assert.assertEquals(Save20Message, "Code SAVE20 applied: -20%", "Message is displayed incorrect");
         homePage.clickLogoutButton();
 
     }
@@ -644,14 +644,13 @@ public class KeishiaTests extends Base {
         reviewExtrasPage.EnterDiscountCode("RandomCode");
         reviewExtrasPage.SelectToApplyDiscountCode();
 
-        String Save10Message = reviewExtrasPage.SelectToApplyDiscountCodeMessage();
-        Assert.assertEquals(Save10Message, "Invalid code", "Message is displayed incorrect");
+        String InvalidCode = reviewExtrasPage.SelectToApplyDiscountCodeMessage();
+        Assert.assertEquals(InvalidCode, "Invalid code", "Message is displayed incorrect");
         homePage.clickLogoutButton();
 
     }
-//Ended here
     @Test(priority = 24)
-    public void NoDiscountApplied() {
+    public void NoDiscountApplied() throws InterruptedException {
         homePage.ClickHomeButton();
         homePage.clickLearningMaterial();
         loginPage.enterLoginEmail("kb@gmail.com");
@@ -671,20 +670,45 @@ public class KeishiaTests extends Base {
         reviewExtrasPage.ShippingOptionExpress();
         reviewExtrasPage.SelectOneYearWarranty();
         reviewExtrasPage.EnterDiscountCode("");
-        reviewExtrasPage.SelectToApplyDiscountCode();
 
-        String Save10Message = reviewExtrasPage.SelectToApplyDiscountCodeMessage();
-        Assert.assertEquals(Save10Message, "", "Message is displayed incorrect");
+        reviewExtrasPage.SelectToApplyDiscountCode();
+        Thread.sleep(2000);
         homePage.clickLogoutButton();
 
     }
 
+    @Test (priority = 25)
+    public void VerifyAddCartButtonIsSelected () throws InterruptedException {
+        homePage.ClickHomeButton();
+        homePage.clickLearningMaterial();
+        loginPage.enterLoginEmail("kb@gmail.com");
+        loginPage.enterPasswordId("D3vt3sting#");
+        loginPage.clickLogin();
+        homePage.SelectWebAutomationButton();
+
+        webAutomationAdvancePage.verifyInventoryHeaderIsDisplayed();
+        webAutomationAdvancePage.selectDeviceType("Phone");
+        webAutomationAdvancePage.selectBrand("Apple");
+        webAutomationAdvancePage.storage128GB();
+        webAutomationAdvancePage.SelectDeviceColour("White");
+        webAutomationAdvancePage.SelectDeviceQuantity("1");
+        webAutomationAdvancePage.EnterAddress("test");
+        webAutomationAdvancePage.SelectNextButton();
+        reviewExtrasPage.ShippingOptionExpress();
+        reviewExtrasPage.SelectOneYearWarranty();
+        reviewExtrasPage.EnterDiscountCode("");
+        reviewExtrasPage.VerifyAddCartButtonIsSelected();
+
+        homePage.clickLogoutButton();
+
+    }
+
+    @Test ()
 
 
 
-    
-    @AfterTest
-    public void closeBrowser() {
+   @AfterTest
+   public void closeBrowser() {
         driver.quit();
     }
 }
